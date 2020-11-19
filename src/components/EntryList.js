@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EntryModel from '../models/entry';
-import Entry from '../pages/Entry';
+// import Entry from '../pages/Entry';
 
 
 const EntryList = (props) => {
