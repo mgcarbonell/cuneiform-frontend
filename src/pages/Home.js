@@ -18,10 +18,14 @@ const Home = (props) => {
     </>
       :
     <>
+      <Link to={'/Entry'}>
+        <Button color="primary" variant="contained">
+          Public Entries
+        </Button>
+      </Link>
       <Button color="primary" variant="contained" disabled>
           New Entry
         </Button>
-    {console.log(props)}
     </>
     }
     </>

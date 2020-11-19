@@ -1,6 +1,6 @@
 const REACT_APP_API_URL = "http://localhost:4000/api/v1"
 
-export default class UserModel {
+class UserModel {
   static create(data) {
     return fetch(`${REACT_APP_API_URL}/auth/register`, {
       method: "POST",
@@ -31,3 +31,5 @@ export default class UserModel {
     })
   }
 }
+
+export default UserModel;
