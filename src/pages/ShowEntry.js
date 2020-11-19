@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useParams } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import EntryModel from '../models/entry';
