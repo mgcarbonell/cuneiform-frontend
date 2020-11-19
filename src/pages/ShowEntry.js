@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useParams } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 import EntryModel from '../models/entry';
 // import comments from comments
 // import material styling from @material-ui
@@ -24,6 +26,11 @@ const ShowEntry = (props) => {
         <div>
           <p>Insert Comments Component Here</p>
         </div>
+        <Link to={'/'}>
+          <Button color="primary" variant="contained">
+            Back to all public entries
+          </Button>
+        </Link>
     </>
   );
 }
