@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "cuneiform-frontend",
+=======
+  "name": "cuneiform-backend",
+>>>>>>> submain
   "version": "0.1.0",
   "private": true,
   "dependencies": {
