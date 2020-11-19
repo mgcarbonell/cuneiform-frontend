@@ -11,6 +11,7 @@ const Register = props => {
   const handleName = e => {
     setName(e.target.value)
   }
+  
   const handleUsername = e => {
     setUsername(e.target.value)
   }
@@ -25,9 +26,7 @@ const Register = props => {
   }
 
   const handleSubmit = e => {
-    console.log(e)
     e.preventDefault()
-
     if (password === confirmPassword) {
       UserModel.create({ email, name, username, password })
         .then(data => {
@@ -37,6 +36,7 @@ const Register = props => {
         })
     }
   }
+  
 
   return (
     <div>
