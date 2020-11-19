@@ -1,5 +1,5 @@
 {
-  "name": "cuneiform-backend",
+  "name": "cuneiform-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
