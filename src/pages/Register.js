@@ -3,13 +3,18 @@ import UserModel from '../models/user'
 
 const Register = props => {
   const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleName = e => {
     setName(e.target.value)
-  }  
+  }
+  
+  const handleUsername = e => {
+    setUsername(e.target.value)
+  }
   const handleEmail = e => {
     setEmail(e.target.value)
   }
@@ -45,6 +50,17 @@ const Register = props => {
             type="text" 
             id="name" 
             name="name" 
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="name">Username</label>
+          <input 
+            onChange={ handleUsername } 
+            value={ username }
+            type="text" 
+            id="Username" 
+            name="Username" 
             required
           />
         </div>
