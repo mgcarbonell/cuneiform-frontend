@@ -8,26 +8,38 @@ const Header = (props) => {
     <header>
       <AppBar position="static">
         <Toolbar>
-          <div className="logo">
-            <Link to={'/'}>Home</Link>
-          </div>
-          <div className="links">
+            <Link to={'/'}>
+              <Button>
+                Home
+              </Button>
+            </Link>
               { props.currentUser ? 
                 <>
                   <Link to={'/profile'}>
-                    <Button color="inherit">
+                    <Button>
                       Profile
                     </Button>
                   </Link>
-                  <a href="/logout" onClick={ props.logout }>Log Out</a>
+                  <Link to={'/logout'}>
+                    <Button onClick={ props.logout }>
+                      Logout
+                    </Button>
+                  </Link>
                 </>
               :
                 <>
-                  <Link to={'/register'}>Register</Link>
-                  <Link to={'/login'}>Login</Link>
+                  <Link to={'/register'}>
+                    <Button>
+                  Register
+                    </Button>
+                  </Link>
+                  <Link to={'/login'}>
+                    <Button>
+                      Login
+                    </Button>
+                  </Link>
                 </>
               }
-          </div>
         </Toolbar>
       </AppBar>
     </header>
