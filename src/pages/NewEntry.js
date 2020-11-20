@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import { Button, Container, TextField } from '@material-ui/core';
+import EntryModel from '../models/entry';
+import { SentimentSatisfied } from '@material-ui/icons';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,26 +18,69 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NewEntry = () => {
+const NewEntry = (props) => {
   const classes = useStyles();
+  
+  const [title, setTitle] = useState()
+  const [body, setBody] = useState()
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log( title, body)
+
+    EntryModel.create(props)
+      .then(data => {
+        props.history.push({
+          pathname: '/entry/create',
+          state: data
+        })
+      })
+  }
+
+  // handleChange = (event) => {
+  //   if (event.target.type !== "text") {
+  //     setState({ completed: !props.completed })
+  //   }
+    
+  //   setTitle({
+  //     [event.target.name]: event.target.value
+  //   })
+
+  //   setBody({
+  //     [event.target.name]: event.target.value
+  //   })
+  // }
 
   return (
     <div>
-      <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="outlined-basic" label="Title" variant="outlined" />
-      </form>
-      <form className={classes.root} noValidate autoComplete="off">
-        <div>
-        <TextField
-          id="outlined-multiline-static"
-          label="Write Away"
-          multiline
-          rows={40}
-          defaultValue=""
-          variant="outlined"
-        />
-        </div>
-      </form>
+      <Container maxWidth="sm">
+        <form className={classes.root} onSubmit={handleSubmit} noValidate autoComplete="off">
+          <TextField 
+            id="outlined-basic" 
+            label="Title" 
+            value={title} 
+            onInput={ e => setTitle(e.target.value)}
+            variant="outlined" 
+          />
+          <div>
+            <TextField
+              id="outlined-multiline-static"
+              label="Write Away"
+              multiline
+              rows={40}
+              value={body}
+              onInput={ e => setBody(e.target.value)}
+              variant="outlined"
+            />
+          </div>
+        <Button 
+          type="submit"
+          className={classes.button}
+        >
+        Public
+        </Button>
+        </form>
+      </Container>
     </div>
   );
 }
