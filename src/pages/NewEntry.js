@@ -27,19 +27,17 @@ const NewEntry = (props) => {
     e.preventDefault();
     console.log( title, body)
 
-    EntryModel.create(props)
+    EntryModel.create({ title, body })
       .then(data => {
-        props.history.push({
-          pathname: '/entry/create',
-          "title": title,
-          "body": body
-        })
+        props.history.push('/create')
       })
   }
 
   return (
     <div>
       <Container maxWidth="sm">
+
+
         <form className={classes.root} onSubmit={handleSubmit} noValidate autoComplete="off">
           <TextField 
             id="outlined-basic" 

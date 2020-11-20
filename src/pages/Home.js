@@ -23,11 +23,6 @@ const Home = (props) => {
           Public Entries
         </Button>
       </Link>
-      <Link to={'/NewEntry'}>
-        <Button color="primary" variant="contained">
-          New Entry
-        </Button>
-      </Link>
     </>
     }
     </>

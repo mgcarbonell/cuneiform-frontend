@@ -12,6 +12,7 @@ import NewEntry from '../pages/NewEntry'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const currentUser = localStorage.getItem('id')
+  const currentUsername = localStorage.getItem('username')
   return  <Route { ...rest } render={ props => {
             return currentUser ? <Component { ...rest } { ...props } /> : <Redirect to="/login" />
           }} 
@@ -32,9 +33,12 @@ const Routes = (props) => (
                 // more props to come here
                 currentUser={ props.currentUser }
                 storeUser={ props.storeUser }
+                currentUsername={ props.currentUsername }
+                storeUsername={ props.storeUsername }
+                
               />
     } } />
-    <PrivateRoute path='/profile' component={ Profile } currentUser={ props.currentUser } />
+    <PrivateRoute path='/profile' component={ Profile } currentUser={ props.currentUser } currentUsername={ props.currentUsername } />
   </Switch>
 )
 
