@@ -7,6 +7,7 @@ import Login from '../pages/Login'
 import Profile from '../pages/Profile'
 import EntryList from '../components/EntryList'
 import ShowEntry from '../pages/ShowEntry'
+import NewEntry from '../pages/NewEntry'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const currentUser = localStorage.getItem('id')
@@ -21,6 +22,7 @@ const Routes = (props) => (
     <Route exact path='/' component={ Home } />
     <Route path='/entry/:id' component={ ShowEntry } />
     <Route path='/entry' component={ EntryList } />
+    <Route path='/newentry' component={ NewEntry } />
     <Route path='/register' component={ Register } />
     <Route path='/login' render={ (routeComponentProps) => {
       return  <Login 
