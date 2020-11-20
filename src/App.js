@@ -24,6 +24,7 @@ function App() {
     event.preventDefault()
 
     localStorage.removeItem('id')
+    localStorage.removeItem('username')
     // localStorage.removeItem('id')
 
     UserModel.logout()
