@@ -5,15 +5,15 @@ import EntryModel from '../models/entry';
 // import Entry from '../pages/Entry';
 
 
-const EntryList = (props) => {
+const UserEntries = (props) => {
 
   const [entries, setEntries] = useState([])
   
 
   useEffect(() => {
-    EntryModel.all()
+    EntryModel.all(props.match.auth.user)
       .then(data => setEntries(data.entries))
-  }, [])
+  }, [props.match.auth.user])
 
   
 
@@ -23,7 +23,7 @@ const EntryList = (props) => {
         <>
         <h3 key={entry.id}>{entry.title}</h3>
         <h5>By {entry.userId}</h5>
-        <p>{entry.body}</p>
+        <p>{`${entry.body.split(" ").splice(0, 50).join(" ")}...`}</p>
         <Link to={`/entry/${entry.id}`}>
           <Button color="primary" variant="contained">
             Read more
@@ -36,4 +36,4 @@ const EntryList = (props) => {
 
 }
 
-export default EntryList;
+export default UserEntries;

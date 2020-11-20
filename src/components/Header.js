@@ -25,6 +25,11 @@ const Header = (props) => {
                       Logout
                     </Button>
                   </Link>
+                  <Link to={'/NewEntry'}>
+                    <Button color="primary" variant="contained">
+                      New Entry
+                    </Button>
+                  </Link>
                 </>
               :
                 <>
