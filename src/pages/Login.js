@@ -27,6 +27,7 @@ const Login = props => {
         }
         // storeUser is defined in the app component and passed to Login
         props.storeUser(data.user)
+        props.storeUsername(data.username)
       })
       .catch(err => console.log('Login Error', err))
   }
