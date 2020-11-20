@@ -5,7 +5,6 @@ const Profile = props => {
   return (
     <>
     <UserEntries />
-    <h1>Profile of user with ID { props.currentUser }</h1>
     <h1>Profile of user with ID { props.currentUsername }</h1>
     </>
   )

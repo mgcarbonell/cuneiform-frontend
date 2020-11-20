@@ -1,14 +1,24 @@
-import React from 'react';
-import PromptModel from '..models/prompt';
+import React, { useState, useEffect } from 'react';
+import PromptModel from '../models/prompt';
+
+const Prompt = () => {
+  const [prompt, setPrompt] = useState([])
 
 
+  useEffect(() => {
+    PromptModel.all()
+    .then(data => {
+      console.log(data)
+      setPrompt(data.prompts[Math.floor(Math.random() * data.prompts.length)])})
+  }, [])
 
-function Prompt() {
-  return (
+  return(
     <div>
-      
+      {prompt.body}
     </div>
   )
 }
 
 export default Prompt
+
+// [Math.floor(Math.random() * data.prompts.length)]

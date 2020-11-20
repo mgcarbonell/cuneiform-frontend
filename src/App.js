@@ -26,6 +26,10 @@ function App() {
 
     localStorage.removeItem('id')
     localStorage.removeItem('username')
+<<<<<<< HEAD
+    // localStorage.removeItem('id')
+=======
+>>>>>>> submain
 
     UserModel.logout()
       .then(res => {
