@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Container, TextField } from '@material-ui/core';
 import EntryModel from '../models/entry';
+import Prompt from '../components/Prompt'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +24,7 @@ const NewEntry = (props) => {
   const [title, setTitle] = useState()
   const [body, setBody] = useState()
   
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log( title, body)
@@ -35,6 +37,7 @@ const NewEntry = (props) => {
 
   return (
     <div>
+      <Prompt />
       <Container maxWidth="sm">
 
 
@@ -62,9 +65,11 @@ const NewEntry = (props) => {
         <Button 
           type="submit"
           className={classes.button}
+          // we'd need a value of setting isPublic to true
         >
         Public
         </Button>
+        {/* we'd have another button here, setting the value of isPublic to false */}
         </form>
       </Container>
     </div>
