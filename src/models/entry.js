@@ -9,6 +9,10 @@ class EntryModel {
   static show = (entryId) => {
     return fetch(`${REACT_APP_API_URL}/entry/${entryId}`).then(res => res.json())
   }
+  
+  static user = (userId) => {
+    return fetch(`${REACT_APP_API_URL}/entry/user/${userId}`).then(res => res.json())
+  }
 
   // static showUser's entries
   // match a currentUser's id with the userId on the entry

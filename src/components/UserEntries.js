@@ -6,14 +6,13 @@ import EntryModel from '../models/entry';
 
 
 const UserEntries = (props) => {
-
   const [entries, setEntries] = useState([])
   
 
   useEffect(() => {
-    EntryModel.all(props.match.auth.user)
+    EntryModel.user(props.currentUser)
       .then(data => setEntries(data.entries))
-  }, [props.match.auth.user])
+  }, [])
 
   
 
@@ -23,7 +22,7 @@ const UserEntries = (props) => {
         <>
         <h3 key={entry.id}>{entry.title}</h3>
         <h5>By {entry.userId}</h5>
-        <p>{`${entry.body.split(" ").splice(0, 50).join(" ")}...`}</p>
+        <p>{entry.body}</p>
         <Link to={`/entry/${entry.id}`}>
           <Button color="primary" variant="contained">
             Read more

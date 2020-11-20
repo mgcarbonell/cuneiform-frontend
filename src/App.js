@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import UserEntries from './components/UserEntries'
 import Routes from './config/Routes'
 import './App.css'
 import UserModel from './models/user'
@@ -25,7 +26,10 @@ function App() {
 
     localStorage.removeItem('id')
     localStorage.removeItem('username')
+<<<<<<< HEAD
     // localStorage.removeItem('id')
+=======
+>>>>>>> submain
 
     UserModel.logout()
       .then(res => {
@@ -39,6 +43,9 @@ function App() {
         currentUser={ currentUser } 
         currentUsername={ currentUsername } 
         logout={ logout }
+      />
+      <UserEntries 
+        currentUser={ currentUser }         
       />
       <Routes 
         currentUser={ currentUser }
