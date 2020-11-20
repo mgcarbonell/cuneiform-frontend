@@ -13,13 +13,20 @@ class EntryModel {
   // static showUser's entries
   // match a currentUser's id with the userId on the entry
   // 
-
+  
   // create an entry
+  static create = (entryData) => {
+    return fetch(`${REACT_APP_API_URL}/entry/create`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(entryData)
+    }).then(res => res.json())
+  }
 
   // delete an entry
 }
-
-
 
 
 export default EntryModel;

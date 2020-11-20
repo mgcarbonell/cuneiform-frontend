@@ -1,13 +1,74 @@
-const { FilterCenterFocus } = require("@material-ui/icons");
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Button, Container, TextField } from '@material-ui/core';
+import EntryModel from '../models/entry';
 
-import React from 'react'
 
-const NewEntry = () => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
+
+const NewEntry = (props) => {
+  const classes = useStyles();
+  
+  const [title, setTitle] = useState()
+  const [body, setBody] = useState()
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log( title, body)
+
+    EntryModel.create({ title, body })
+      .then(data => {
+        props.history.push('/create')
+      })
+  }
+
   return (
     <div>
-      
+      <Container maxWidth="sm">
+
+
+        <form className={classes.root} onSubmit={handleSubmit} noValidate autoComplete="off">
+          <TextField 
+            id="outlined-basic" 
+            label="Title"
+            type="text"
+            value={title} 
+            onInput={ e => setTitle(e.target.value)}
+            variant="outlined" 
+          />
+          <div>
+            <TextField
+              id="outlined-multiline-static"
+              label="Write Away"
+              multiline
+              rows={40}
+              value={body}
+              type="text"
+              onInput={ e => setBody(e.target.value)}
+              variant="outlined"
+            />
+          </div>
+        <Button 
+          type="submit"
+          className={classes.button}
+        >
+        Public
+        </Button>
+        </form>
+      </Container>
     </div>
-  )
+  );
 }
 
 export default NewEntry;
