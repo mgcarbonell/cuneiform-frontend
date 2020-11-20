@@ -37,27 +37,6 @@ const ShowEntry = (props) => {
 
 export default ShowEntry;
 
-// useParams
-// Provides access to search parameters in the URL
-// This was possible earlier only using match.params.
-// import { useParams, Route } from 'react-router-dom';
-
-// function Profile() {
-//   const { name } = useParams();
-//   return <p>{name}'s Profile</p>;
-// }
-
-// function Dashboard() {
-//   return (
-//     <>
-//       <nav>
-//         <Link to={`/profile/ann`}>Ann's Profile</Link>
-//       </nav>
-//       <main>
-//         <Route path="/profile/:name">
-//           <Profile />
-//         </Route>
-//       </main>
-//     </>
-//   );
-// }
+// In order for a user to delete their own post:
+// if currentUser ? hide delete button : show delete button
+// but currentUser id = userId of post user.id === match.params.id 

@@ -35,3 +35,6 @@ const EntryList = (props) => {
 }
 
 export default EntryList;
+
+// Show only public posts, so if isPublic === true => show post.
+// if isPublic ? hide post : show post

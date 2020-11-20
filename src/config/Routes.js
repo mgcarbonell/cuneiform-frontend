@@ -31,6 +31,9 @@ const Routes = (props) => (
               />
     } } />
     <PrivateRoute path='/profile' component={ Profile } currentUser={ props.currentUser } />
+    {/* PrivateRoute path='/entry/create' component={ NewEntry } currentUser={ props.currentUser } */}
+    {/* PrivateRoute path='/still trying to figure this one out entry/user/orsomething' component={ UserEntries } currentUser={ props.currentUser } */}
+    {/* PrivateRoute path='/entry/destroy' component={ DeleteEntry } currentUser={ props.currentUser } <-not necessary*/}
   </Switch>
 )
 
