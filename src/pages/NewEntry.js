@@ -31,24 +31,11 @@ const NewEntry = (props) => {
       .then(data => {
         props.history.push({
           pathname: '/entry/create',
-          state: data
+          "title": title,
+          "body": body
         })
       })
   }
-
-  // handleChange = (event) => {
-  //   if (event.target.type !== "text") {
-  //     setState({ completed: !props.completed })
-  //   }
-    
-  //   setTitle({
-  //     [event.target.name]: event.target.value
-  //   })
-
-  //   setBody({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
 
   return (
     <div>
@@ -56,7 +43,8 @@ const NewEntry = (props) => {
         <form className={classes.root} onSubmit={handleSubmit} noValidate autoComplete="off">
           <TextField 
             id="outlined-basic" 
-            label="Title" 
+            label="Title"
+            type="text"
             value={title} 
             onInput={ e => setTitle(e.target.value)}
             variant="outlined" 
@@ -68,6 +56,7 @@ const NewEntry = (props) => {
               multiline
               rows={40}
               value={body}
+              type="text"
               onInput={ e => setBody(e.target.value)}
               variant="outlined"
             />
