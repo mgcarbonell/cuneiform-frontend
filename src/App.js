@@ -26,10 +26,6 @@ function App() {
 
     localStorage.removeItem('id')
     localStorage.removeItem('username')
-<<<<<<< HEAD
-    // localStorage.removeItem('id')
-=======
->>>>>>> submain
 
     UserModel.logout()
       .then(res => {
@@ -43,9 +39,6 @@ function App() {
         currentUser={ currentUser } 
         currentUsername={ currentUsername } 
         logout={ logout }
-      />
-      <UserEntries 
-        currentUser={ currentUser }         
       />
       <Routes 
         currentUser={ currentUser }
