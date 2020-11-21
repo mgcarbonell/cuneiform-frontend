@@ -38,7 +38,7 @@ const NewEntry = (props) => {
   return (
     <div>
       <Prompt />
-      <Container maxWidth="sm">
+      <Container maxWidth="xs">
 
 
         <form className={classes.root} onSubmit={handleSubmit} noValidate autoComplete="off">
