@@ -4,7 +4,7 @@ import UserEntries from '../components/UserEntries';
 const Profile = props => {
   return (
     <>
-    <UserEntries />
+    <UserEntries currentUser={ props.currentUser } />
     <h1>Profile of user with ID { props.currentUsername }</h1>
     </>
   )

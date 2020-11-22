@@ -40,9 +40,6 @@ function App() {
         currentUsername={ currentUsername } 
         logout={ logout }
       />
-      <UserEntries 
-        currentUser={ currentUser }         
-      />
       <Routes 
         currentUser={ currentUser }
         currentUsername={ currentUsername }
