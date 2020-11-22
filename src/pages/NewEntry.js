@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Container, TextField } from '@material-ui/core';
 import EntryModel from '../models/entry';
 import Prompt from '../components/Prompt'
+import Quote from '../components/Quote'
+import { makeStyles } from '@material-ui/core/styles';
+import { Button, Grid, Paper, TextField, Switch } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,42 +37,89 @@ const NewEntry = (props) => {
   }
 
   return (
-    <div>
-      <Prompt />
-      <Container maxWidth="sm">
+    <div style={{padding: 50}}>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        <Paper>
 
-
-        <form className={classes.root} onSubmit={handleSubmit} noValidate autoComplete="off">
-          <TextField 
-            id="outlined-basic" 
-            label="Title"
-            type="text"
-            value={title} 
-            onInput={ e => setTitle(e.target.value)}
-            variant="outlined" 
-          />
-          <div>
-            <TextField
-              id="outlined-multiline-static"
-              label="Write Away"
-              multiline
-              rows={40}
-              value={body}
-              type="text"
-              onInput={ e => setBody(e.target.value)}
-              variant="outlined"
+          <Paper elevation={3}>
+            <Prompt aria-label="A writing prompt" />
+            <Quote aria-label="A quote for you to write about" />
+          </Paper>
+          <Grid
+            component="label"
+            container
+            justify="center"
+            alignItems="center"
+            spacing={1}
+          >
+            <Grid item>Prompt</Grid>
+            <Grid item>
+              <Switch
+              // checked={state.checkedB} change is between prompt OR a quote
+              // onChange={handleChange}
+              color="primary"
+              name="checkedB"
+              label="Quote or Prompt"
+              inputProps={{ 'aria-label': 'primary checkbox for a quote or a prompt' }}
             />
-          </div>
-        <Button 
-          type="submit"
-          className={classes.button}
-          // we'd need a value of setting isPublic to true
-        >
-        Public
-        </Button>
-        {/* we'd have another button here, setting the value of isPublic to false */}
-        </form>
-      </Container>
+            </Grid>
+            <Grid item>Quote</Grid>
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+
+            <form 
+                className={classes.root} 
+                onSubmit={handleSubmit} 
+                noValidate 
+                autoComplete="off"
+            >
+
+              <div aria-label="Entry title textfield">
+                <TextField 
+                  id="outlined-basic" 
+                  label="Title"
+                  type="text"
+                  value={title} 
+                  onInput={ e => setTitle(e.target.value)}
+                  variant="outlined" 
+                />
+              </div>
+
+              <div aria-label="Journal entry textfield">
+                <TextField
+                  id="outlined-multiline-static"
+                  label="Write Away"
+                  multiline
+                  rows={40}
+                  value={body}
+                  type="text"
+                  onInput={ e => setBody(e.target.value)}
+                  variant="outlined"
+                />
+              </div>
+
+              <Button 
+                type="submit"
+                className={classes.button}
+              // we'd need a value of setting isPublic to true
+              >
+                Public
+              </Button>
+            {/* we'd have another button here, setting the value of isPublic to false */}
+              </form>
+          </Grid>
+        </Paper>
+      </Grid>
     </div>
   );
 }

@@ -8,7 +8,6 @@ const Prompt = () => {
   useEffect(() => {
     PromptModel.all()
     .then(data => {
-      console.log(data)
       setPrompt(data.prompts[Math.floor(Math.random() * data.prompts.length)])})
   }, [])
 
