@@ -39,6 +39,8 @@ const Routes = (props) => (
               />
     } } />
     <PrivateRoute path='/profile' component={ Profile } currentUser={ props.currentUser } currentUsername={ props.currentUsername } />
+    {/* update an entry */}
+    {/* delete an entry */}
   </Switch>
 )
 
