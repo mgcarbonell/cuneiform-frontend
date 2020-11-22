@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EntryModel from '../models/entry';
 import Prompt from '../components/Prompt'
+import Quote from '../components/Quote'
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Grid, Paper, TextField, Switch } from '@material-ui/core';
 
@@ -47,6 +48,7 @@ const NewEntry = (props) => {
 
           <Paper elevation={3}>
             <Prompt aria-label="A writing prompt" />
+            <Quote aria-label="A quote for you to write about" />
           </Paper>
           <Grid
             component="label"
@@ -55,7 +57,7 @@ const NewEntry = (props) => {
             alignItems="center"
             spacing={1}
           >
-            <Grid item>Quote</Grid>
+            <Grid item>Prompt</Grid>
             <Grid item>
               <Switch
               // checked={state.checkedB} change is between prompt OR a quote
@@ -66,7 +68,7 @@ const NewEntry = (props) => {
               inputProps={{ 'aria-label': 'primary checkbox for a quote or a prompt' }}
             />
             </Grid>
-            <Grid item>Prompt</Grid>
+            <Grid item>Quote</Grid>
           </Grid>
           <Grid
             container
