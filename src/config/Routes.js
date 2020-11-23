@@ -7,7 +7,7 @@ import Login from '../pages/Login'
 import Profile from '../pages/Profile'
 import EntryList from '../components/EntryList'
 import ShowEntry from '../pages/ShowEntry'
-import NewEntry from '../pages/NewEntry'
+import NewEntry from '../components/NewEntryForm'
 // import UserEntries from '../pages/UserEntries';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {

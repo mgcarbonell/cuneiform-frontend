@@ -5,6 +5,7 @@ import UserEntries from './components/UserEntries'
 import Routes from './config/Routes'
 import './App.css'
 import UserModel from './models/user'
+import { Grid } from '@material-ui/core'
 
 function App() {
   const [currentUser, setCurrentUser] = useState(localStorage.getItem('id'))
@@ -40,12 +41,14 @@ function App() {
         currentUsername={ currentUsername } 
         logout={ logout }
       />
-      <Routes 
-        currentUser={ currentUser }
-        currentUsername={ currentUsername }
-        storeUser={ storeUser }
-        storeUsername={ storeUsername }
-      />
+      <Grid style={{ padding: 20 }}>
+        <Routes 
+          currentUser={ currentUser }
+          currentUsername={ currentUsername }
+          storeUser={ storeUser }
+          storeUsername={ storeUsername }
+        />
+      </Grid>
       <Footer />
     </div>
   );

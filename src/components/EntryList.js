@@ -19,9 +19,7 @@ const EntryList = (props) => {
   return (
     <>
       {entries.map((entry) => (
-        <Grid
-        style={{ padding: 20 }}
-        >
+        <Grid>
           <Paper 
           elevation={3} 
           style={{

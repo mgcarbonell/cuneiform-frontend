@@ -28,6 +28,17 @@ class EntryModel {
     }).then(res => res.json())
   }
 
+// update entry
+  static update = (entryId) => {
+    return fetch(`${process.env.REACT_APP_INTERNAL_API_URL}/entry/${entryId}`, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(entryId)
+    }).then(res => res.json())
+  }
+
   // delete an entry
 }
 
