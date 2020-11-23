@@ -10,7 +10,7 @@ const Home = (props) => {
     <EntryList />
     { props.currentUser ?
     <>
-      <Link to={'/NewEntry'}>
+      <Link to={'/NewEntryForm'}>
         <Button color="primary" variant="contained">
           New Entry
         </Button>
