@@ -7,7 +7,6 @@ const Quote = () => {
   useEffect(() => {
     QuoteModel.show()
     .then(data => {
-      console.log(data)
       setQuote(data)
     })
   }, [])
