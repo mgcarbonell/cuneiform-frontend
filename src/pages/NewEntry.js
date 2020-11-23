@@ -21,23 +21,33 @@ const useStyles = makeStyles((theme) => ({
 
 const NewEntry = (props) => {
   const classes = useStyles();
-  
-  const [title, setTitle] = useState()
-  const [body, setBody] = useState()
+
+  const [title, setTitle] = useState();
+  const [body, setBody] = useState();
+  const [promptId, setPromptId] = useState();
+  const [quote, setQuote] = useState();
+  const [isPublic, setIsPublic] = useState();
+  const [state, setState] = useState({
+    checkedB: false
+  });
   
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log( title, body)
-
-    EntryModel.create({ title, body })
+    let userId = localStorage.getItem("id")
+  
+    EntryModel.create({ title, body, userId, promptId, quote, isPublic })
       .then(data => {
         props.history.push('/create')
       })
   }
 
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
   return (
-    <div style={{padding: 50}}>
+    <div style={{ padding: 50 }}>
       <Grid
         container
         direction="column"
@@ -46,22 +56,33 @@ const NewEntry = (props) => {
       >
         <Paper>
 
-          <Paper elevation={3}>
-            <Prompt aria-label="A writing prompt" />
-            <Quote aria-label="A quote for you to write about" />
+          <Paper 
+            elevation={3}
+          >
+            {!state.checkedB ?
+            <Prompt 
+            aria-label="A writing prompt"
+            value={promptId}
+            />
+            :
+            <Quote 
+            aria-label="A quote for you to write about" 
+            value={quote}
+            />
+            }
           </Paper>
           <Grid
             component="label"
             container
             justify="center"
             alignItems="center"
-            spacing={1}
+            spacing={2}
           >
             <Grid item>Prompt</Grid>
             <Grid item>
               <Switch
-              // checked={state.checkedB} change is between prompt OR a quote
-              // onChange={handleChange}
+              checked={state.checkedB}
+              onChange={handleChange}
               color="primary"
               name="checkedB"
               label="Quote or Prompt"
@@ -111,6 +132,15 @@ const NewEntry = (props) => {
               <Button 
                 type="submit"
                 className={classes.button}
+                onClick={ e => setIsPublic(false)}
+              // we'd need a value of setting isPublic to true
+              >
+                Private
+              </Button>
+              <Button 
+                type="submit"
+                className={classes.button}
+                onClick={ e => setIsPublic(true)}
               // we'd need a value of setting isPublic to true
               >
                 Public
