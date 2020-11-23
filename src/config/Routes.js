@@ -25,7 +25,7 @@ const Routes = (props) => (
     <Route path='/entry/:id' component={ ShowEntry } />
     <Route path='/entry' component={ EntryList } />
     {/* <Route path='/entry/user/:id' component={ UserEntries } /> */}
-    <Route path='/newentry' component={ NewEntry } currentUser={ props.currentUser}/>
+    <Route path='/newentry' component={ NewEntry } currentUser={ props.currentUser }/>
     <Route path='/register' component={ Register } />
     <Route path='/login' render={ (routeComponentProps) => {
       return  <Login 

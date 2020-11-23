@@ -27,7 +27,7 @@ const NewEntry = (props) => {
   const [promptId, setPromptId] = useState();
   const [quote, setQuote] = useState();
   const [isPublic, setIsPublic] = useState();
-  const [userId, setUserId] = useState();
+  // const [userId, setUserId] = useState();
   const [state, setState] = useState({
     checkedB: false
   });
@@ -35,9 +35,8 @@ const NewEntry = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUserId(props.currentUser)
-    console.log( title, body, userId)
-
+    let userId = localStorage.getItem("id")
+  
     EntryModel.create({ title, body, userId, promptId, quote, isPublic })
       .then(data => {
         props.history.push('/create')
@@ -132,6 +131,15 @@ const NewEntry = (props) => {
               <Button 
                 type="submit"
                 className={classes.button}
+                onClick={ e => setIsPublic(false)}
+              // we'd need a value of setting isPublic to true
+              >
+                Private
+              </Button>
+              <Button 
+                type="submit"
+                className={classes.button}
+                onClick={ e => setIsPublic(true)}
               // we'd need a value of setting isPublic to true
               >
                 Public
