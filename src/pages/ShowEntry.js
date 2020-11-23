@@ -1,32 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+import { Button, IconButton, Grid } from '@material-ui/core';
 import EntryModel from '../models/entry';
-// import comments from comments
+import EditIcon from '@material-ui/icons/Edit' 
+import DeleteIcon from '@material-ui/icons/Delete';
+import CompleteEntry from '../components/CompleteEntry';
+import EditEntryForm from '../components/EditEntryForm';
 // import material styling from @material-ui
 
 const ShowEntry = (props) => {
-
-  const [entry, setEntry] = useState([]);
   
+  const [entry, setEntry] = useState([]);
+  // const [comment, setComment] = useState();
+  const [formStyle, setFormStyle] = useState();
 
   useEffect(() => {
     EntryModel.show(props.match.params.id)
       .then(data => setEntry(data.entry))
   }, [props.match.params.id])
 
+  useEffect(() => {
+    EntryModel.update(props.match.params.id)
+    .then(data => setEntry)
+  })
+
+
+  // toggleBodyForm = () => {
+  //   formStyle.display === 'block'
+  //   ? setFormStyle({formStyle: {display: 'none'}})
+  //   : setFormStyle({formStyle: {display: 'block'}});
+  // };
+
 
   return (
     <>
-        <div>
-          <h3>{entry.title}</h3>
-          <h5>{entry.userId}</h5>
-          <p>{entry.body}</p>
-        </div>
-        <div>
-          <p>Insert Comments Component Here</p>
-        </div>
-        <Link to={'/'}>
+    <CompleteEntry
+      entryTitle={entry.title}
+      entryId={entry.userId}
+      entryBody={entry.body}
+      />
+    <EditEntryForm
+      entryTitle={entry.title}
+      entryId={entry.userId}
+      entryBody={entry.body}
+      />
+        {/* <h3>{entry.title}</h3>
+        <h5>{entry.userId}</h5>
+        <p>{entry.body}</p> */}
+        <Grid item xs={12}>
+          <IconButton >
+            <EditIcon />
+          </IconButton>
+          <IconButton>
+            <DeleteIcon />
+          </IconButton>
+        </Grid>
+        <Link to={ '/' }>
           <Button color="primary" variant="contained">
             Back to all public entries
           </Button>
