@@ -27,7 +27,6 @@ const NewEntry = (props) => {
   const [promptId, setPromptId] = useState();
   const [quote, setQuote] = useState();
   const [isPublic, setIsPublic] = useState();
-  // const [userId, setUserId] = useState();
   const [state, setState] = useState({
     checkedB: false
   });
@@ -57,7 +56,9 @@ const NewEntry = (props) => {
       >
         <Paper>
 
-          <Paper elevation={3} style={{ padding: 40 }}>
+          <Paper 
+            elevation={3}
+          >
             {!state.checkedB ?
             <Prompt 
             aria-label="A writing prompt"
@@ -75,7 +76,7 @@ const NewEntry = (props) => {
             container
             justify="center"
             alignItems="center"
-            spacing={1}
+            spacing={2}
           >
             <Grid item>Prompt</Grid>
             <Grid item>
