@@ -19,7 +19,7 @@ const EntryList = (props) => {
 
   return (
     <div>
-      {entries.map((entry) => (
+      {entries.reverse().map((entry) => (
         <>
         <h3 key={entry.id}>{entry.title}</h3>
         <h5>By {entry.userId}</h5>
