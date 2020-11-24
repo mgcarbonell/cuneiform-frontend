@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import EntryModel from '../models/entry';
-import Prompt from '../components/Prompt'
-import Quote from '../components/Quote'
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Grid, Paper, TextField, Switch } from '@material-ui/core';
+import { Button, Grid, Paper, TextField } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,14 +20,9 @@ const useStyles = makeStyles((theme) => ({
 const EditEntryForm = (props) => {
   const classes = useStyles();
 
-  const [title, setTitle] = useState();
-  const [body, setBody] = useState();
-  const [promptId, setPromptId] = useState();
-  const [quote, setQuote] = useState();
+  const [title, setTitle] = useState(props.entryTitle);
+  const [body, setBody] = useState(props.entryBody);
   const [isPublic, setIsPublic] = useState();
-  const [state, setState] = useState({
-    checkedB: false
-  });
   
 
   const handleSubmit = (e) => {
@@ -37,15 +30,14 @@ const EditEntryForm = (props) => {
     let userId = localStorage.getItem("id")
     
   // update model to entryModel.update!!!
-    EntryModel.create({ title, body, userId, promptId, quote, isPublic })
+    EntryModel.update({ title, body, userId, isPublic }, props.entryId)
       .then(data => {
-        props.history.push('/create')
+        console.log(data)
+        props.history.push() //won't work because it won't come from a router switch
+        // but we have a Hook that is available from react router, where we can useHistory
       })
   }
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
 
   return (
     <div style={{ padding: 50 }}>
@@ -56,42 +48,6 @@ const EditEntryForm = (props) => {
         alignItems="center"
       >
         <Paper>
-
-          <Paper 
-            elevation={3}
-          >
-            {!state.checkedB ?
-            <Prompt 
-            aria-label="A writing prompt"
-            value={promptId}
-            />
-            :
-            <Quote 
-            aria-label="A quote for you to write about" 
-            value={quote}
-            />
-            }
-          </Paper>
-          <Grid
-            component="label"
-            container
-            justify="center"
-            alignItems="center"
-            spacing={2}
-          >
-            <Grid item>Prompt</Grid>
-            <Grid item>
-              <Switch
-              checked={state.checkedB}
-              onChange={handleChange}
-              color="primary"
-              name="checkedB"
-              label="Quote or Prompt"
-              inputProps={{ 'aria-label': 'primary checkbox for a quote or a prompt' }}
-            />
-            </Grid>
-            <Grid item>Quote</Grid>
-          </Grid>
           <Grid
             container
             direction="column"
@@ -112,7 +68,7 @@ const EditEntryForm = (props) => {
                   label="Title"
                   type="text"
                   value={title}
-                  defaultValue={props.entryTitle}
+                  // defaultValue={props.entryTitle}
                   onInput={ e => setTitle(e.target.value)}
                   variant="outlined" 
                 />
@@ -125,7 +81,7 @@ const EditEntryForm = (props) => {
                   multiline
                   rows={40}
                   value={body}
-                  defaultValue={props.entryBody}
+                  // defaultValue={props.entryBody}
                   type="text"
                   onInput={ e => setBody(e.target.value)}
                   variant="outlined"
