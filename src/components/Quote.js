@@ -12,7 +12,7 @@ const Quote = () => {
   }, [])
 
   if(!quote) {
-    return null
+    return "Personalizing an incredibly inspirational quote just for you..."
   }
 
   return(

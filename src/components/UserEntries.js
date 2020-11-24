@@ -29,7 +29,7 @@ const UserEntries = (props) => {
           </Button>
         </Link>
         </>
-      ))}
+      )).reverse()}
     </div>
   )
 

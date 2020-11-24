@@ -14,6 +14,9 @@ const ShowEntry = (props) => {
   // const [comment, setComment] = useState();
   const [formStyle, setFormStyle] = useState();
 
+
+  let userId = localStorage.getItem('id')
+
   useEffect(() => {
     EntryModel.show(props.match.params.id)
       .then(data => setEntry(data.entry))
@@ -39,21 +42,26 @@ const ShowEntry = (props) => {
       entryId={entry.userId}
       entryBody={entry.body}
       />
-    <EditEntryForm
-      entryTitle={entry.title}
-      entryId={entry.userId}
-      entryBody={entry.body}
-      />
-        {/* <h3>{entry.title}</h3>
-        <h5>{entry.userId}</h5>
-        <p>{entry.body}</p> */}
-        <Grid item xs={12}>
+      <Grid item xs={12}>
+      { parseInt(userId) === entry.userId ?
+        <>
           <IconButton >
             <EditIcon />
           </IconButton>
           <IconButton>
             <DeleteIcon />
           </IconButton>
+        </>  
+      :
+        <>
+        </>  
+      }
+    <EditEntryForm
+      entryTitle={entry.title}
+      entryId={entry.userId}
+      entryBody={entry.body}
+      />
+
         </Grid>
         <Link to={ '/' }>
           <Button color="primary" variant="contained">
