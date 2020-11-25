@@ -32,6 +32,15 @@ const ShowEntry = (props) => {
     setFormToggle(true)
   }
 
+
+  const handleDelete = () => {
+    console.log(entry.id)
+    EntryModel.delete(entry, entry.id)
+    .then(data =>
+      props.history.push('Home')
+    )
+  }
+
   return (
     <>
       <Grid item xs={12}>
@@ -40,7 +49,7 @@ const ShowEntry = (props) => {
           <IconButton onClick={handleToggle}>
             <EditIcon />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={handleDelete}>
             <DeleteIcon />
           </IconButton>
         </>  
@@ -54,6 +63,7 @@ const ShowEntry = (props) => {
         entryTitle={entry.title}
         entryId={entry.id}
         entryBody={entry.body}
+        setFormToggle={setFormToggle}
       />
       :
       <CompleteEntry
