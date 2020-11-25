@@ -29,13 +29,13 @@ class EntryModel {
   }
 
 // update entry
-  static update = (entryId) => {
+  static update = (entry, entryId) => {
     return fetch(`${process.env.REACT_APP_INTERNAL_API_URL}/entry/${entryId}`, {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(entryId)
+      body: JSON.stringify(entry)
     }).then(res => res.json())
   }
 

@@ -12,7 +12,8 @@ const ShowEntry = (props) => {
   
   const [entry, setEntry] = useState([]);
   // const [comment, setComment] = useState();
-  const [formStyle, setFormStyle] = useState();
+  const [formToggle, setFormToggle] = useState(false);
+
 
 
   let userId = localStorage.getItem('id')
@@ -27,25 +28,16 @@ const ShowEntry = (props) => {
     .then(data => setEntry)
   })
 
-
-  // toggleBodyForm = () => {
-  //   formStyle.display === 'block'
-  //   ? setFormStyle({formStyle: {display: 'none'}})
-  //   : setFormStyle({formStyle: {display: 'block'}});
-  // };
-
+  const handleToggle = () => {
+    setFormToggle(true)
+  }
 
   return (
     <>
-    <CompleteEntry
-      entryTitle={entry.title}
-      entryId={entry.userId}
-      entryBody={entry.body}
-      />
       <Grid item xs={12}>
       { parseInt(userId) === entry.userId ?
         <>
-          <IconButton >
+          <IconButton onClick={handleToggle}>
             <EditIcon />
           </IconButton>
           <IconButton>
@@ -56,11 +48,20 @@ const ShowEntry = (props) => {
         <>
         </>  
       }
-    <EditEntryForm
-      entryTitle={entry.title}
-      entryId={entry.userId}
-      entryBody={entry.body}
+      
+      { formToggle ?
+      <EditEntryForm
+        entryTitle={entry.title}
+        entryId={entry.id}
+        entryBody={entry.body}
       />
+      :
+      <CompleteEntry
+        entryTitle={entry.title}
+        entryId={entry.id}
+        entryBody={entry.body}
+      />
+      }
 
         </Grid>
         <Link to={ '/' }>
