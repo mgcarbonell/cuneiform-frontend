@@ -38,7 +38,7 @@ const NewEntry = (props) => {
   
     EntryModel.create({ title, body, userId, promptId, quote, isPublic })
       .then(data => {
-        props.history.push('/create')
+        props.history.push('/profile')
       })
   }
 
@@ -133,7 +133,6 @@ const NewEntry = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(false)}
-              // we'd need a value of setting isPublic to true
               >
                 Private
               </Button>
@@ -141,11 +140,9 @@ const NewEntry = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(true)}
-              // we'd need a value of setting isPublic to true
               >
                 Public
               </Button>
-            {/* we'd have another button here, setting the value of isPublic to false */}
               </form>
           </Grid>
         </Paper>

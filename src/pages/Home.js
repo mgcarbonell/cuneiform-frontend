@@ -16,7 +16,7 @@ const Home = (props) => {
         </Button>
       </Link>
     </>
-      :
+    :
     <>
       <Link to={'/Entry'}>
         <Button color="primary" variant="contained">
