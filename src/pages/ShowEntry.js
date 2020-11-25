@@ -39,9 +39,9 @@ const ShowEntry = (props) => {
     <>
     <CompleteEntry
       entryTitle={entry.title}
-      entryId={entry.userId}
+      entryId={entry.id}
       entryBody={entry.body}
-      />
+    />
       <Grid item xs={12}>
       { parseInt(userId) === entry.userId ?
         <>
@@ -58,7 +58,7 @@ const ShowEntry = (props) => {
       }
     <EditEntryForm
       entryTitle={entry.title}
-      entryId={entry.userId}
+      entryId={entry.id}
       entryBody={entry.body}
       />
 
@@ -66,6 +66,11 @@ const ShowEntry = (props) => {
         <Link to={ '/' }>
           <Button color="primary" variant="contained">
             Back to all public entries
+          </Button>
+        </Link>
+        <Link to={'/profile'}>
+          <Button color="primary" variant="contained">
+            Back to profile
           </Button>
         </Link>
     </>
