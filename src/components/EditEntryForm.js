@@ -29,10 +29,9 @@ const EditEntryForm = (props) => {
     let userId = localStorage.getItem("id")
     EntryModel.update({ title, body, userId, isPublic }, props.entryId)
       .then(() => {
-        
+        props.setFormToggle(false)
       })
   }
-
 
   return (
     <div style={{ padding: 50 }}>
@@ -87,7 +86,6 @@ const EditEntryForm = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(false)}
-              // we'd need a value of setting isPublic to true
               >
                 Private
               </Button>
@@ -95,11 +93,9 @@ const EditEntryForm = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(true)}
-              // we'd need a value of setting isPublic to true
               >
                 Public
               </Button>
-            {/* we'd have another button here, setting the value of isPublic to false */}
               </form>
           </Grid>
         </Paper>

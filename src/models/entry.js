@@ -1,21 +1,19 @@
 
 class EntryModel {
-  
+  // show all entries
   static all = () => {
     return fetch(`${process.env.REACT_APP_INTERNAL_API_URL}/entry`).then(res => res.json())
   }
 
+  // show entry
   static show = (entryId) => {
     return fetch(`${process.env.REACT_APP_INTERNAL_API_URL}/entry/${entryId}`).then(res => res.json())
   }
   
+  // show user entries
   static user = (userId) => {
     return fetch(`${process.env.REACT_APP_INTERNAL_API_URL}/entry/user/${userId}`).then(res => res.json())
   }
-
-  // static showUser's entries
-  // match a currentUser's id with the userId on the entry
-  // 
   
   // create an entry
   static create = (entryData) => {
@@ -28,7 +26,7 @@ class EntryModel {
     }).then(res => res.json())
   }
 
-// update entry
+// update an entry
   static update = (entry, entryId) => {
     return fetch(`${process.env.REACT_APP_INTERNAL_API_URL}/entry/${entryId}`, {
       method: 'PUT',
@@ -40,6 +38,15 @@ class EntryModel {
   }
 
   // delete an entry
+  static delete = (entry, entryId) => {
+    return fetch(`${process.env.REACT_APP_INTERNAL_API_URL}/entry/${entryId}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(entry)
+    }).then(res => res.json())
+  }
 }
 
 
