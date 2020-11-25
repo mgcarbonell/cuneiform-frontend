@@ -27,8 +27,6 @@ const EditEntryForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let userId = localStorage.getItem("id")
-    console.log(props.entryId)
-  // update model to entryModel.update!!!
     EntryModel.update({ title, body, userId, isPublic }, props.entryId)
       .then(() => {
         
@@ -37,7 +35,6 @@ const EditEntryForm = (props) => {
 
 
   return (
-    // ternary checks between edit mode. if true, display form, false, completed entry
     <div style={{ padding: 50 }}>
       <Grid
         container
