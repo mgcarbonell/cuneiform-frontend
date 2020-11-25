@@ -32,7 +32,6 @@ const EditEntryForm = (props) => {
     EntryModel.update({ title, body, userId, isPublic }, props.entryId)
       .then(() => {
         
-        // but we have a Hook that is available from react router, where we can useHistory
       })
   }
 

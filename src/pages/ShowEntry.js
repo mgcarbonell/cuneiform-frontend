@@ -48,6 +48,7 @@ const ShowEntry = (props) => {
         <>
         </>  
       }
+      
       { formToggle ?
       <EditEntryForm
         entryTitle={entry.title}
