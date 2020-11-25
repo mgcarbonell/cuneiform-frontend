@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { AppBar, Toolbar } from '@material-ui/core'
 import { Button } from '@material-ui/core'
+import NewEntryModal from './NewEntryModal'
 
 const Header = (props) => {
+
+  const [showModal, setShowModal] = useState(false)
+
   return (
     <header>
       <AppBar position="static">
@@ -25,11 +29,15 @@ const Header = (props) => {
                       Logout
                     </Button>
                   </Link>
-                  <Link to={'/NewEntry'}>
-                    <Button color="primary" variant="contained">
+                    {/* <Button color="primary" variant="contained" onClick> */}
+                  <NewEntryModal showModal={showModal} setShowModal={setShowModal}/>
+                    <Button 
+                      color="primary" 
+                      variant="contained" 
+                      onClick={() => setShowModal(!showModal)}
+                    >         
                       New Entry
                     </Button>
-                  </Link>
                 </>
               :
                 <>
