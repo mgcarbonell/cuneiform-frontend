@@ -23,23 +23,22 @@ const EditEntryForm = (props) => {
   const [title, setTitle] = useState(props.entryTitle);
   const [body, setBody] = useState(props.entryBody);
   const [isPublic, setIsPublic] = useState();
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let userId = localStorage.getItem("id")
-    
+    console.log(props.entryId)
   // update model to entryModel.update!!!
     EntryModel.update({ title, body, userId, isPublic }, props.entryId)
-      .then(data => {
-        console.log(data)
-        props.history.push() //won't work because it won't come from a router switch
+      .then(() => {
+        
         // but we have a Hook that is available from react router, where we can useHistory
       })
   }
 
 
   return (
+    // ternary checks between edit mode. if true, display form, false, completed entry
     <div style={{ padding: 50 }}>
       <Grid
         container
@@ -68,7 +67,7 @@ const EditEntryForm = (props) => {
                   label="Title"
                   type="text"
                   value={title}
-                  // defaultValue={props.entryTitle}
+                  defaultValue={props.entryTitle}
                   onInput={ e => setTitle(e.target.value)}
                   variant="outlined" 
                 />
@@ -81,8 +80,8 @@ const EditEntryForm = (props) => {
                   multiline
                   rows={40}
                   value={body}
-                  // defaultValue={props.entryBody}
                   type="text"
+                  defaultValue={props.entryBody}
                   onInput={ e => setBody(e.target.value)}
                   variant="outlined"
                 />
