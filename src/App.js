@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
-<<<<<<< HEAD
-// import UserEntries from './components/UserEntries'
-=======
->>>>>>> submain
 import Routes from './config/Routes'
 import './App.css'
 import UserModel from './models/user'
