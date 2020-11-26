@@ -29,7 +29,7 @@ const ShowEntry = (props) => {
   useEffect(() => {
     EntryModel.update(props.match.params.id)
     .then(data => setEntry)
-  })
+  }, [])
 
   const handleToggle = () => {
     setFormToggle(true)
