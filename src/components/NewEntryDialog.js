@@ -1,100 +1,35 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-import Dialog from '@material-ui/core/Dialog'
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import React, { useState, useEffect, useRef } from 'react';
+import Button from '@material-ui/core/Button';
+import { 
+              Dialog, 
+              DialogTitle, 
+              DialogContent, 
+              makeStyles 
+            } from '@material-ui/core';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContentText from '@material-ui/core/DialogContentText';
+
+const useStyles = makeStyles(theme => ({
+  dialogWrapper: {
+    padding: theme.spacing(2)
+  }
+}))
 
 const NewEntryDialog = (props) => {
-  // const [openDialog, setOpenDialog] = useState(false);
-  // const [scroll, setScroll] = useState('paper');
+
+  const {title, children, openDialog, setOpenDialog} = props;
 
   return (
-    <div>
-      <Dialog 
-        openDialog={props.openDialog}
-        setOpenDialog={props.setOpenDialog}  
-      >
-        <DialogTitle>
-          <div>Title</div>
-        </DialogTitle>
-        <DialogContent>
-          <div>Content</div>
-        </DialogContent>
-      </Dialog>
-    </div>
+    <Dialog open={openDialog} maxWidth="md">
+      <DialogTitle>
+        <div>Title</div>
+      </DialogTitle>
+      <DialogContent dividers>
+        {children} 
+      </DialogContent>
+    </Dialog>
   )
 
 }
 
 export default NewEntryDialog;
-=======
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-
-export default function ScrollDialog() {
-  const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState('paper');
-
-  const handleClickOpen = (scrollType) => () => {
-    setOpen(true);
-    setScroll(scrollType);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const descriptionElementRef = React.useRef(null);
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
-
-  return (
-    <div>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-      >
-        <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
-        <DialogContent dividers={scroll === 'paper'}>
-          <DialogContentText
-            id="scroll-dialog-description"
-            ref={descriptionElementRef}
-            tabIndex={-1}
-          >
-            {[...new Array(50)]
-              .map(
-                () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-              )
-              .join('\n')}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
-}
->>>>>>> babylon

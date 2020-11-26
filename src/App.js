@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Header from './components/Header'
+import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Routes from './config/Routes'
 import './App.css'
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header 
+      <Navbar 
         currentUser={ currentUser } 
         currentUsername={ currentUsername } 
         logout={ logout }
