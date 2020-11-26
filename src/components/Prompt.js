@@ -18,6 +18,4 @@ const Prompt = () => {
   )
 }
 
-export default Prompt
-
-// [Math.floor(Math.random() * data.prompts.length)]
+export default Prompt;

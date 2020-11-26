@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, IconButton, Grid } from '@material-ui/core';
 import EntryModel from '../models/entry';
-import EditIcon from '@material-ui/icons/Edit' 
+import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CompleteEntry from '../components/CompleteEntry';
 import EditEntryForm from '../components/EditEntryForm';
+import Comments from '../components/Comments';
+import CommentForm from '../components/CommentForm';
+import ConfirmDialog from '../components/ConfirmDialog'
 // import material styling from @material-ui
 
 const ShowEntry = (props) => {
   
   const [entry, setEntry] = useState([]);
-  // const [comment, setComment] = useState();
   const [formToggle, setFormToggle] = useState(false);
-
-
+  const [commentFormToggle, setCommentFormToggle] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   let userId = localStorage.getItem('id')
 
+  // entry model hooks and functions
   useEffect(() => {
     EntryModel.show(props.match.params.id)
       .then(data => setEntry(data.entry))
@@ -26,70 +29,84 @@ const ShowEntry = (props) => {
   useEffect(() => {
     EntryModel.update(props.match.params.id)
     .then(data => setEntry)
-  })
+  }, [])
 
   const handleToggle = () => {
     setFormToggle(true)
   }
 
-
   const handleDelete = () => {
-    console.log(entry.id)
     EntryModel.delete(entry, entry.id)
-    .then(data =>
-      props.history.push('Home')
-    )
+      .then(
+        props.history.push('/profile')
+        )
   }
+
+  // comment models hooks and functions
+
 
   return (
     <>
       <Grid item xs={12}>
+      
+      { formToggle ?
+        <EditEntryForm
+          entryTitle={entry.title}
+          entryId={entry.id}
+          entryBody={entry.body}
+          setFormToggle={setFormToggle}
+        />
+      :
+        <CompleteEntry
+          entryTitle={entry.title}
+          entryId={entry.id}
+          entryBody={entry.body}
+        />
+      }
+
       { parseInt(userId) === entry.userId ?
         <>
           <IconButton onClick={handleToggle}>
             <EditIcon />
           </IconButton>
-          <IconButton onClick={handleDelete}>
+          <IconButton aria-label="delete" onClick={() => setConfirmOpen(true)}>
             <DeleteIcon />
           </IconButton>
+          <ConfirmDialog
+              title="Delete Post?"
+              open={confirmOpen}
+              setOpen={setConfirmOpen}
+              onConfirm={handleDelete}
+          >
+            Do you really want to delete this entry?
+          </ConfirmDialog>
         </>  
       :
         <>
         </>  
       }
-      
-      { formToggle ?
-      <EditEntryForm
-        entryTitle={entry.title}
-        entryId={entry.id}
-        entryBody={entry.body}
-        setFormToggle={setFormToggle}
-      />
-      :
-      <CompleteEntry
-        entryTitle={entry.title}
-        entryId={entry.id}
-        entryBody={entry.body}
-      />
-      }
+      </Grid>
 
-        </Grid>
-        <Link to={ '/' }>
-          <Button color="primary" variant="contained">
-            Back to all public entries
-          </Button>
-        </Link>
-        <Link to={'/profile'}>
-          <Button color="primary" variant="contained">
-            Back to profile
-          </Button>
-        </Link>
+      <Link to={ '/' }>
+        <Button color="primary" variant="contained">
+          Back to all public entries
+        </Button>
+      </Link>
+      
+      <CommentForm 
+        comments={props.comments}
+        setComments={props.setComments}
+        commentFormToggle={props.commentFormToggle}
+        setCommentFormToggle={setCommentFormToggle}
+        entryId={entry.id}
+      />
+      
+      <Comments
+        commentFormToggle={props.commentFormToggle}
+        setCommentFormToggle={props.setCommentFormToggle}
+      />
     </>
   );
 }
 
 export default ShowEntry;
-
-// In order for a user to delete their own post:
-// if currentUser ? hide delete button : show delete button
-// but currentUser id = userId of post user.id === match.params.id 

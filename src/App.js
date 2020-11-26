@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
-// import UserEntries from './components/UserEntries'
 import Routes from './config/Routes'
 import './App.css'
 import UserModel from './models/user'

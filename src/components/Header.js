@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 import { AppBar, Toolbar } from '@material-ui/core'
 import { Button } from '@material-ui/core'
+<<<<<<< HEAD
 import NewEntryDialog from './NewEntryDialog'
 
 const Header = (props) => {
@@ -17,6 +18,10 @@ const Header = (props) => {
   }
 
 
+=======
+
+const Header = (props) => {
+>>>>>>> babylon
   return (
     <header>
       <AppBar position="static">
@@ -26,6 +31,7 @@ const Header = (props) => {
                 Home
               </Button>
             </Link>
+<<<<<<< HEAD
             { props.currentUser ? 
               <>
                 <Link to={'/profile'}>
@@ -66,6 +72,40 @@ const Header = (props) => {
                 </Link>
               </>
             }
+=======
+              { props.currentUser ? 
+                <>
+                  <Link to={'/profile'}>
+                    <Button>
+                      Profile
+                    </Button>
+                  </Link>
+                  <Link to={'/logout'}>
+                    <Button onClick={ props.logout }>
+                      Logout
+                    </Button>
+                  </Link>
+                  <Link to={'/NewEntry'}>
+                    <Button color="primary" variant="contained">
+                      New Entry
+                    </Button>
+                  </Link>
+                </>
+              :
+                <>
+                  <Link to={'/register'}>
+                    <Button>
+                  Register
+                    </Button>
+                  </Link>
+                  <Link to={'/login'}>
+                    <Button>
+                      Login
+                    </Button>
+                  </Link>
+                </>
+              }
+>>>>>>> babylon
         </Toolbar>
       </AppBar>
     </header>
