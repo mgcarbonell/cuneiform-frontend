@@ -14,8 +14,6 @@ const UserEntries = (props) => {
       .then(data => setEntries(data.entries))
   }, [])
 
-  
-
   return (
     <div>
       {entries.map((entry) => (

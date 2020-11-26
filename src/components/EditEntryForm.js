@@ -3,7 +3,6 @@ import EntryModel from '../models/entry';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Grid, Paper, TextField } from '@material-ui/core';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {

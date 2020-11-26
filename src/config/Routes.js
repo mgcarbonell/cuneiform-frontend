@@ -35,7 +35,6 @@ const Routes = (props) => (
                 storeUser={ props.storeUser }
                 currentUsername={ props.currentUsername }
                 storeUsername={ props.storeUsername }
-                
               />
     } } />
     <PrivateRoute path='/profile' component={ Profile } currentUser={ props.currentUser } currentUsername={ props.currentUsername } />

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CommentModel from '../models/comment';
-import CommentForm from './CommentForm';
-import { Button, Grid, IconButton, Paper } from '@material-ui/core';
+import { Grid, IconButton, Paper } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
@@ -10,14 +9,12 @@ const Comments = (props) => {
   
   const [comment, setComment] = useState(true);
   const [comments, setComments] = useState([]);
-  
+  const [entryId, setEntryId] = useState([]);
   
   useEffect(() => {
-    CommentModel.all({
-      where: {
-        entryId: props.entryId,
-      }
-    }).then(data => setComments(data.comments))
+    console.log(entryId)
+    CommentModel.show(entryId)
+      .then(data => setComments(data.comments))
   }, [])
   
   const handleCommentFormToggle = () => {
@@ -32,10 +29,10 @@ const Comments = (props) => {
 
   return(
     <>
-      { comments.map((comment) => (
-        <Grid>
+      <Grid>
+        { comments.map((comment) => (
           <Paper
-          elevation={3} 
+          elevation={1} 
           style={{
           padding: 10,
           paddingBottom: 20
@@ -51,8 +48,8 @@ const Comments = (props) => {
             <DeleteIcon />
             </IconButton>
           </Paper>
-        </Grid>
-      )).reverse()}
+        )).reverse()}
+      </Grid>
     </>
   )
 }

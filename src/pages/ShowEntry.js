@@ -27,7 +27,7 @@ const ShowEntry = (props) => {
   useEffect(() => {
     EntryModel.update(props.match.params.id)
     .then(data => setEntry)
-  })
+  }, [])
 
   const handleToggle = () => {
     setFormToggle(true)
@@ -84,14 +84,15 @@ const ShowEntry = (props) => {
       </Link>
       
       <CommentForm 
-        comment={props.comments}
-        comment={props.setComments}
+        entryId={entry.id}
+        comments={props.comments}
+        setComments={props.setComments}
         commentFormToggle={props.commentFormToggle}
         setCommentFormToggle={setCommentFormToggle}
-        entryId={entry.id}
       />
       
       <Comments
+        entryId={entry.id}
         commentFormToggle={props.commentFormToggle}
         setCommentFormToggle={props.setCommentFormToggle}
       />
