@@ -30,12 +30,10 @@ const Routes = (props) => (
     <Route path='/login' render={ (routeComponentProps) => {
       return  <Login 
                 {...routeComponentProps}
-                // more props to come here
                 currentUser={ props.currentUser }
                 storeUser={ props.storeUser }
                 currentUsername={ props.currentUsername }
                 storeUsername={ props.storeUsername }
-                
               />
     } } />
     <PrivateRoute path='/profile' component={ Profile } currentUser={ props.currentUser } currentUsername={ props.currentUsername } />

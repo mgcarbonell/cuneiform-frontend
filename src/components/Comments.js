@@ -1,28 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import CommentModel from '../models/comment';
-import CommentForm from './CommentForm';
-import { Button, Grid, IconButton, Paper } from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
+import { Grid, IconButton, Paper } from '@material-ui/core';
+// import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const Comments = (props) => {
-  
   const [comment, setComment] = useState(true);
   const [comments, setComments] = useState([]);
-  
+  // const [entryId, setEntryId] = useState([]);
+  const entryId = useParams()
   
   useEffect(() => {
-    CommentModel.all({
-      where: {
-        entryId: props.entryId,
-      }
-    }).then(data => setComments(data.comments))
-  }, [])
+    CommentModel.show(entryId.id)
+      .then(data => setComments(data.comments))
+  }, [comments])
   
-  const handleCommentFormToggle = () => {
-    props.setCommentFormToggle(true)
-  }
+  // const handleCommentFormToggle = () => {
+  //   props.setCommentFormToggle(true)
+  // }
 
   const handleCommentDelete = () => {
     CommentModel.delete(comment, comment.id)
@@ -32,27 +29,26 @@ const Comments = (props) => {
 
   return(
     <>
-      { comments.map((comment) => (
-        <Grid>
+      <Grid>
+        { comments.map((comment) => (
           <Paper
-          elevation={3} 
+          elevation={1} 
           style={{
           padding: 10,
           paddingBottom: 20
           }}
           >
-            <h3 key={comment.id}>{comment.id}</h3>
-            <h5>By {comment.userId}</h5>
+            <h3 key={comment.id}>{comment.userId}</h3>
             <p>{comment.body}</p>
-            <IconButton onClick={handleCommentFormToggle}>
+            {/* <IconButton onClick={handleCommentFormToggle}>
             <EditIcon />
-            </IconButton>
+            </IconButton> */}
             <IconButton onClick={handleCommentDelete}>
             <DeleteIcon />
             </IconButton>
           </Paper>
-        </Grid>
-      )).reverse()}
+        )).reverse()}
+      </Grid>
     </>
   )
 }
