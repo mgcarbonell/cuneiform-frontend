@@ -1,8 +1,8 @@
 
 class CommentModel {
   // show comments
-  static all = () => {
-    return fetch(`${process.env.REACT_APP_INTERNAL_API_URL}/comment`).then(res => res.json())
+  static show = (entryId) => {
+    return fetch(`${process.env.REACT_APP_INTERNAL_API_URL}/comment/${entryId}`).then(res => res.json())
   }
   
   // create a comment

@@ -48,7 +48,6 @@ const ShowEntry = (props) => {
   return (
     <>
       <Grid item xs={12}>
-      
       { formToggle ?
         <EditEntryForm
           entryTitle={entry.title}
@@ -94,14 +93,18 @@ const ShowEntry = (props) => {
       </Link>
       
       <CommentForm 
+<<<<<<< HEAD
+=======
+        entryId={entry.id}
+>>>>>>> submain
         comments={props.comments}
         setComments={props.setComments}
         commentFormToggle={props.commentFormToggle}
         setCommentFormToggle={setCommentFormToggle}
-        entryId={entry.id}
       />
       
       <Comments
+        entryId={entry.id}
         commentFormToggle={props.commentFormToggle}
         setCommentFormToggle={props.setCommentFormToggle}
       />

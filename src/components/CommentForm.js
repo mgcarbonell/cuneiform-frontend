@@ -1,7 +1,7 @@
 import React, {useState } from 'react';
 import CommentModel from '../models/comment';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Grid, Paper, TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,10 +23,11 @@ const CommentForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let entryId = props.entryId
     let userId = localStorage.getItem("id")
-    CommentModel.create({ userId, body }, props.commentId)
+    CommentModel.create({ userId, entryId, body })
       .then(() => {
-        props.setCommentFormToggle(false)
+        setBody("");
       })
   }
 
