@@ -27,7 +27,7 @@ const CommentForm = (props) => {
     let userId = localStorage.getItem("id")
     CommentModel.create({ userId, entryId, body })
       .then(() => {
-        props.setCommentFormToggle(false)
+        setBody("");
       })
   }
 

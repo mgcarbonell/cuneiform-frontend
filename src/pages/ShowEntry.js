@@ -46,7 +46,6 @@ const ShowEntry = (props) => {
   return (
     <>
       <Grid item xs={12}>
-      
       { formToggle ?
         <EditEntryForm
           entryTitle={entry.title}

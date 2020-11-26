@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import EntryModel from '../models/entry';
-// import Entry from '../pages/Entry';
-
 
 const UserEntries = (props) => {
   const [entries, setEntries] = useState([])

@@ -1,25 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import CommentModel from '../models/comment';
 import { Grid, IconButton, Paper } from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
+// import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const Comments = (props) => {
-  
   const [comment, setComment] = useState(true);
   const [comments, setComments] = useState([]);
-  const [entryId, setEntryId] = useState([]);
+  // const [entryId, setEntryId] = useState([]);
+  const entryId = useParams()
   
   useEffect(() => {
-    console.log(entryId)
-    CommentModel.show(entryId)
+    CommentModel.show(entryId.id)
       .then(data => setComments(data.comments))
-  }, [])
+  }, [comments])
   
-  const handleCommentFormToggle = () => {
-    props.setCommentFormToggle(true)
-  }
+  // const handleCommentFormToggle = () => {
+  //   props.setCommentFormToggle(true)
+  // }
 
   const handleCommentDelete = () => {
     CommentModel.delete(comment, comment.id)
@@ -38,12 +38,11 @@ const Comments = (props) => {
           paddingBottom: 20
           }}
           >
-            <h3 key={comment.id}>{comment.id}</h3>
-            <h5>By {comment.userId}</h5>
+            <h3 key={comment.id}>{comment.userId}</h3>
             <p>{comment.body}</p>
-            <IconButton onClick={handleCommentFormToggle}>
+            {/* <IconButton onClick={handleCommentFormToggle}>
             <EditIcon />
-            </IconButton>
+            </IconButton> */}
             <IconButton onClick={handleCommentDelete}>
             <DeleteIcon />
             </IconButton>
