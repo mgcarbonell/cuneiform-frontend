@@ -11,18 +11,21 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 
 const useStyles = makeStyles(theme => ({
   dialogWrapper: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
   }
 }))
 
 const NewEntryDialog = (props) => {
 
   const {title, children, openDialog, setOpenDialog} = props;
+  const classes = useStyles()
 
   return (
-    <Dialog open={openDialog} maxWidth="md">
+    <Dialog open={openDialog} >
       <DialogTitle>
-        <div>Title</div>
+        <div>
+          {title}
+        </div>
       </DialogTitle>
       <DialogContent dividers>
         {children} 

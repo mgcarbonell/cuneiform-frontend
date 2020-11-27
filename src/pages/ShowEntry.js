@@ -93,10 +93,7 @@ const ShowEntry = (props) => {
       </Link>
       
       <CommentForm 
-<<<<<<< HEAD
-=======
         entryId={entry.id}
->>>>>>> submain
         comments={props.comments}
         setComments={props.setComments}
         commentFormToggle={props.commentFormToggle}

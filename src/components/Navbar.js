@@ -55,12 +55,13 @@ const Navbar = (props) => {
         </Toolbar>
       </AppBar>
       <NewEntryDialog
+        title={'New Entry'}
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
       >
-      <NewEntryForm>
+        <NewEntryForm>
 
-      </NewEntryForm>
+        </NewEntryForm>
       </NewEntryDialog>
     </header>
   );

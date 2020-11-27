@@ -14,7 +14,7 @@ const ConfirmDialog = (props) => {
     <Dialog
       open={open}
       onClose={() => setOpen(false)}
-      aria-labelledby="confirm-dialog"
+      aria-labelledby="Confirmation Dialog"
     >
       <DialogTitle id="confirm-dialog">{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
