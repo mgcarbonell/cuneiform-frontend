@@ -93,6 +93,7 @@ const EditEntryForm = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(true)}
+                aria-label="submit edited entry"
               >
                 Public
               </Button>

@@ -18,15 +18,16 @@ const Navbar = (props) => {
                 Home
               </Button>
             </Link>
+            {/* 22-55 conditional rendering based on logged in user */}
               { props.currentUser ? 
                 <>
                   <Link to={'/profile'}>
-                    <Button>
+                    <Button aria-label="profile">
                       Profile
                     </Button>
                   </Link>
                   <Link to={'/logout'}>
-                    <Button onClick={ props.logout }>
+                    <Button onClick={ props.logout } aria-label="logout">
                       Logout
                     </Button>
                   </Link>
@@ -34,18 +35,19 @@ const Navbar = (props) => {
                       color="primary" 
                       variant="contained"
                       onClick={() => setOpenDialog(true)}
+                      aria-label="create a new entry"
                     >
                       New Entry
                     </Button>
                 </>
               :
                 <>
-                  <Link to={'/register'}>
+                  <Link to={'/register'} aria-label="register">
                     <Button>
-                  Register
+                      Register
                     </Button>
                   </Link>
-                  <Link to={'/login'}>
+                  <Link to={'/login'} aria-label="login">
                     <Button>
                       Login
                     </Button>
@@ -60,7 +62,6 @@ const Navbar = (props) => {
         setOpenDialog={setOpenDialog}
       >
         <NewEntryForm>
-
         </NewEntryForm>
       </NewEntryDialog>
     </header>

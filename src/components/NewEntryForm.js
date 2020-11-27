@@ -133,6 +133,7 @@ const NewEntry = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(false)}
+                aria-label="submit post privately"
               >
                 Private
               </Button>
@@ -140,6 +141,7 @@ const NewEntry = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(true)}
+                aria-label="submit post publicly"
               >
                 Public
               </Button>
