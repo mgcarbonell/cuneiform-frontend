@@ -33,7 +33,7 @@ const NewEntryDialog = (props) => {
         // className={ classes.dialogTitle }
       >
         <div style={{ display: 'flex' }}>
-          <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" style={{ flexGrow: 1,  }}>
             {title}
           </Typography>
           <IconButton

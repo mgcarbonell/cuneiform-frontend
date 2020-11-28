@@ -30,6 +30,7 @@ const NewEntry = (props) => {
   const [state, setState] = useState({
     checkedB: false
   });
+  const [openDialog, setOpenDialog] = useState(false);
   
 
   const handleSubmit = (e) => {
@@ -39,7 +40,7 @@ const NewEntry = (props) => {
     EntryModel.create({ title, body, userId, promptId, quote, isPublic })
       .then(data => {
         props.history.push('/profile')
-      })
+      }).then(setOpenDialog(false))
   }
 
   const handleChange = (event) => {
@@ -133,6 +134,7 @@ const NewEntry = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(false)}
+
                 aria-label="submit post privately"
               >
                 Private
