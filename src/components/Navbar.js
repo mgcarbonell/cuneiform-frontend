@@ -10,17 +10,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
 }));
 
 const Navbar = (props) => {
+
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
   const open = Boolean(anchorEl);
 
@@ -31,6 +26,7 @@ const Navbar = (props) => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
 
   return (
     <div className={classes.root}>
@@ -75,10 +71,10 @@ const Navbar = (props) => {
                     open={open}
                     onClose={handleClose}
                   >
-                    <MenuItem component={Link} to={'/profile'} onClick={handleClose}>
+                    <MenuItem component={ Link } to={'/profile'} onClick={handleClose}>
                       Profile
                     </MenuItem>
-                    <MenuItem component={Link} to={'/logout'} onClick={handleClose}>
+                    <MenuItem component={ Link } to={'/logout'} onClick={handleClose, props.logout}>
                       Logout
                     </MenuItem>
                   </Menu>
