@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
+// import { useHistory } from "react-router-dom";
 import EntryModel from '../models/entry';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Grid, Paper, TextField } from '@material-ui/core';
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '70ch',
     },
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '70ch',
     },
   },
 }));
@@ -23,21 +23,15 @@ const EditEntryForm = (props) => {
   const [title, setTitle] = useState(props.entryTitle);
   const [body, setBody] = useState(props.entryBody);
   const [isPublic, setIsPublic] = useState();
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let userId = localStorage.getItem("id")
-    
-  // update model to entryModel.update!!!
     EntryModel.update({ title, body, userId, isPublic }, props.entryId)
-      .then(data => {
-        console.log(data)
-        props.history.push() //won't work because it won't come from a router switch
-        // but we have a Hook that is available from react router, where we can useHistory
+      .then(() => {
+        props.setFormToggle(false)
       })
   }
-
 
   return (
     <div style={{ padding: 50 }}>
@@ -68,7 +62,7 @@ const EditEntryForm = (props) => {
                   label="Title"
                   type="text"
                   value={title}
-                  // defaultValue={props.entryTitle}
+                  defaultValue={props.entryTitle}
                   onInput={ e => setTitle(e.target.value)}
                   variant="outlined" 
                 />
@@ -81,8 +75,8 @@ const EditEntryForm = (props) => {
                   multiline
                   rows={40}
                   value={body}
-                  // defaultValue={props.entryBody}
                   type="text"
+                  defaultValue={props.entryBody}
                   onInput={ e => setBody(e.target.value)}
                   variant="outlined"
                 />
@@ -92,7 +86,6 @@ const EditEntryForm = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(false)}
-              // we'd need a value of setting isPublic to true
               >
                 Private
               </Button>
@@ -100,11 +93,10 @@ const EditEntryForm = (props) => {
                 type="submit"
                 className={classes.button}
                 onClick={ e => setIsPublic(true)}
-              // we'd need a value of setting isPublic to true
+                aria-label="submit edited entry"
               >
                 Public
               </Button>
-            {/* we'd have another button here, setting the value of isPublic to false */}
               </form>
           </Grid>
         </Paper>

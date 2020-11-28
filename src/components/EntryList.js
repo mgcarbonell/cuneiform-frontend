@@ -29,7 +29,7 @@ const EntryList = (props) => {
           >
             <h3 key={entry.id}>{entry.title}</h3>
             <h5>By {entry.userId}</h5>
-            <p>{entry.body}</p>
+            <p>{entry.body.split(' ').splice(0, 100).join(' ')}...</p>
             <Link to={`/entry/${entry.id}`}>
               <Button color="primary" variant="contained">
                 Read more

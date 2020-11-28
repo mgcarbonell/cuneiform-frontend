@@ -5,7 +5,7 @@ const Profile = props => {
   return (
     <>
       <h1>Profile of { props.currentUsername }</h1>
-      <UserEntries 
+      <UserEntries
         currentUser={ props.currentUser }         
       />
     </>
