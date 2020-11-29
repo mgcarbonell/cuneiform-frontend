@@ -80,13 +80,12 @@ const NewEntry = (props) => {
             <Grid item>Prompt</Grid>
             <Grid item>
               <Switch
-              checked={state.checkedB}
-              onChange={handleChange}
-              color="primary"
-              name="checkedB"
-              label="Quote or Prompt"
-              inputProps={{ 'aria-label': 'primary checkbox for a quote or a prompt' }}
-            />
+                checked={state.checkedB}
+                onChange={handleChange}
+                color="primary"
+                name="checkedB"
+                label="Quote or Prompt"
+              />
             </Grid>
             <Grid item>Quote</Grid>
           </Grid>
@@ -127,11 +126,22 @@ const NewEntry = (props) => {
                   variant="outlined"
                 />
               </div>
+              <Grid>
+                {!state.isPublic
+                
+                }
+                <Switch
+                  checked={state.isPublic}
+                  onChange={handleChange}
+                  color="primary"
+                  name="checkedB"
+                  label="Public or Private"
+                />
+              </Grid>
 
               <Button 
                 type="submit"
                 className={classes.button}
-                // onClick={() => setOpenDialog(false)}
               >
                 Submit
               </Button>
