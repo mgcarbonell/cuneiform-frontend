@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import UserModel from '../models/user'
-import TextField from '@material-ui/core/TextField';
+import { Button, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -72,12 +72,18 @@ const Login = props => {
           type="password"
           id="password"
           name="password"
-          label="Password"
+          label="password"
           variant="filled"
           required
         />        
         </div>
-        <button type="submit">Login</button>
+        <Button 
+          variant="contained" 
+          color="primary" 
+          type="submit"
+        >
+          Login
+        </Button>
       </form>
     </div>
   )

@@ -10,7 +10,7 @@ const UserEntries = (props) => {
   useEffect(() => {
     EntryModel.user(props.currentUser)
       .then(data => setEntries(data.entries))
-  }, [])
+  }, [props.currentUser])
 
   return (
     <div>

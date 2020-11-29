@@ -69,60 +69,60 @@ const Navbar = (props) => {
               justify="flex-start"
               alignItems="center"
             >
-            { props.currentUser ? 
-              <>
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
+              { props.currentUser ? 
+                <>
+                  <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleMenu}
+                    color="inherit"
+                    >
+                      <AccountCircle />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      horizontal: 'right'
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      horizontal: 'right',
+                    }}
+                    open={open}
+                    onClose={handleClose}
                   >
-                    <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    horizontal: 'right'
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={handleClose}
-                >
-                  <MenuItem component={ Link } to={'/profile'} onClick={handleClose}>
-                    Profile
-                  </MenuItem>
-                  <MenuItem component={ Link } to={'/logout'} onClick={handleClose, props.logout}>
-                    Logout
-                  </MenuItem>
-                </Menu>
-                <Button 
-                  color="primary" 
-                  variant="contained"
-                  onClick={() => setOpenDialog(true)}
-                  aria-label="create a new entry"
-                >
-                  New Entry
-                </Button>
-              </>
-            :
-              <>
-                <Link to={'/register'} aria-label="register">
-                  <Button>
-                    Register
+                    <MenuItem component={ Link } to={'/profile'} onClick={handleClose}>
+                      Profile
+                    </MenuItem>
+                    <MenuItem component={ Link } to={'/logout'} onClick={handleClose, props.logout}>
+                      Logout
+                    </MenuItem>
+                  </Menu>
+                  <Button 
+                    color="primary" 
+                    variant="contained"
+                    onClick={() => setOpenDialog(true)}
+                    aria-label="create a new entry"
+                  >
+                    New Entry
                   </Button>
-                </Link>
-                <Link to={'/login'} aria-label="login">
-                  <Button>
-                    Login
-                  </Button>
-                </Link>
-              </>
-            }
+                </>
+              :
+                <>
+                  <Link to={'/register'} aria-label="register">
+                    <Button>
+                      Register
+                    </Button>
+                  </Link>
+                  <Link to={'/login'} aria-label="login">
+                    <Button>
+                      Login
+                    </Button>
+                  </Link>
+                </>
+              }
           </Grid>
         </Toolbar>
       </AppBar>
