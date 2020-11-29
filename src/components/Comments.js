@@ -9,8 +9,8 @@ const [comment] = useState();
 
   const handleCommentDelete = (commentId) => {
     CommentModel.delete(comment, commentId)
-      .then(
-        setComments(comments.filter(comment => comment.id != commentId)
+    .then(
+      setComments(comments.filter(comment => comment.id !== commentId)
       )).then(
         loadComments()
       )

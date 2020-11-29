@@ -14,18 +14,18 @@ const ShowEntry = (props) => {
   const [entry, setEntry] = useState([]);
   const [formToggle, setFormToggle] = useState(false);
   const [comments, setComments] = useState([]);
-  // const [comment, setComment] = useState());
   
   const { id } = useParams()
 
   let userId = localStorage.getItem('id')
 
-  // entry model hooks and functions
+  // entry model show
   useEffect(() => {
     EntryModel.show(props.match.params.id)
       .then(data => setEntry(data.entry))
   }, [props.match.params.id])
 
+  // comment model show
   const loadComments = async () => {
     const data = await CommentModel.show(id)
     setComments(data.comments)
