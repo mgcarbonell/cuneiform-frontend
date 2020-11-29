@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 // import Button from '@material-ui/core/Button';
 import { 
               Dialog, 
@@ -29,9 +29,7 @@ const NewEntryDialog = (props) => {
 
   return (
     <Dialog open={ openDialog } >
-      <DialogTitle 
-        // className={ classes.dialogTitle }
-      >
+      <DialogTitle>
         <div style={{ display: 'flex' }}>
           <Typography variant="h6" component="div" style={{ flexGrow: 1,  }}>
             {title}

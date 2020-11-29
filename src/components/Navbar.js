@@ -25,7 +25,7 @@ const Navbar = (props) => {
 
   const handleClose = () => {
     setAnchorEl(null)
-  }
+  };
 
 
   return (
@@ -100,8 +100,9 @@ const Navbar = (props) => {
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
       >
-        <NewEntryForm>
-        </NewEntryForm>
+        <NewEntryForm
+          setOpenDialog={setOpenDialog}
+        />
       </NewEntryDialog>
     </div>
   );
