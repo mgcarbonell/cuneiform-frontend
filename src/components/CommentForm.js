@@ -9,10 +9,6 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: '70ch',
     },
-    // '& > *': {
-    //   margin: theme.spacing(1),
-    //   width: '70ch',
-    // },
   },
 }));
 
@@ -27,6 +23,7 @@ const CommentForm = (props) => {
     let userId = localStorage.getItem("id")
     CommentModel.create({ userId, entryId, body })
       .then(() => {
+        props.loadComments();
         setBody("");
       })
   }
@@ -56,7 +53,6 @@ const CommentForm = (props) => {
       <Button 
         type="submit"
         className={classes.button}
-        onClick={ e => props.setCommentFormToggle(true)}
       >
         Comment
       </Button>

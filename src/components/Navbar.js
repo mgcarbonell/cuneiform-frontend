@@ -37,6 +37,26 @@ const Navbar = (props) => {
                 Home
               </Button>
             </Link>
+            <Grid
+                component="label"
+                container
+                alignItems="center"
+                spacing={2}
+              >
+                <Grid item>
+                  <Brightness7Icon 
+                    fontSize="small"
+                  />
+                </Grid>
+                <Grid item>
+                  <Switch size="small" checked={props.darkMode} onChange={() => props.setDarkMode(!props.darkMode)} />
+                </Grid>
+                <Grid item>
+                  <Brightness4Icon 
+                    fontSize="small"
+                  />
+                </Grid>
+              </Grid>
               { props.currentUser ? 
                 <>
                   <Button 

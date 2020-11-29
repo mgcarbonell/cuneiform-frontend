@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button, IconButton, Grid } from '@material-ui/core';
 import EntryModel from '../models/entry';
+import CommentModel from '../models/comment';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CompleteEntry from '../components/CompleteEntry';
@@ -9,22 +10,32 @@ import EditEntryForm from '../components/EditEntryForm';
 import Comments from '../components/Comments';
 import CommentForm from '../components/CommentForm';
 import ConfirmDialog from '../components/ConfirmDialog'
-// import material styling from @material-ui
 
 const ShowEntry = (props) => {
-  
   const [entry, setEntry] = useState([]);
   const [formToggle, setFormToggle] = useState(false);
-  const [commentFormToggle, setCommentFormToggle] = useState(false);
-  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [comments, setComments] = useState([]);
+  
+  const { id } = useParams()
 
   let userId = localStorage.getItem('id')
 
-  // entry model hooks and functions
+  // entry model show
   useEffect(() => {
     EntryModel.show(props.match.params.id)
       .then(data => setEntry(data.entry))
   }, [props.match.params.id])
+
+  // comment model show
+  const loadComments = async () => {
+    const data = await CommentModel.show(id)
+    setComments(data.comments)
+  }
+
+  useEffect(() => {
+    loadComments()
+  }, [])
+
 
   const handleToggle = () => {
     setFormToggle(true)
@@ -36,9 +47,6 @@ const ShowEntry = (props) => {
         props.history.push('/profile')
         )
   }
-
-  // comment models hooks and functions
-
 
   return (
     <>
@@ -58,7 +66,7 @@ const ShowEntry = (props) => {
         />
       }
 
-      { parseInt(userId) === entry.userId ?
+      { parseInt(userId) === entry.userId &&
         <>
           <IconButton onClick={handleToggle}>
             <EditIcon />
@@ -75,9 +83,6 @@ const ShowEntry = (props) => {
             Do you really want to delete this entry?
           </ConfirmDialog>
         </>  
-      :
-        <>
-        </>  
       }
       </Grid>
 
@@ -86,19 +91,17 @@ const ShowEntry = (props) => {
           Back to all public entries
         </Button>
       </Link>
-      
+
       <CommentForm 
-        entryId={entry.id}
-        comments={props.comments}
-        setComments={props.setComments}
-        commentFormToggle={props.commentFormToggle}
-        setCommentFormToggle={setCommentFormToggle}
+        entryId={ id } 
+        loadComments={ loadComments }
+        comments={ comments }
       />
       
       <Comments
-        entryId={entry.id}
-        commentFormToggle={props.commentFormToggle}
-        setCommentFormToggle={props.setCommentFormToggle}
+        comments={ comments }
+        setComments={ setComments }
+        loadComments={ loadComments }
       />
     </>
   );

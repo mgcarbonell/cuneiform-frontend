@@ -8,11 +8,9 @@ import Profile from '../pages/Profile'
 import EntryList from '../components/EntryList'
 import ShowEntry from '../pages/ShowEntry'
 import NewEntry from '../components/NewEntryForm'
-// import UserEntries from '../pages/UserEntries';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const currentUser = localStorage.getItem('id')
-  const currentUsername = localStorage.getItem('username')
   return  <Route { ...rest } render={ props => {
             return currentUser ? <Component { ...rest } { ...props } /> : <Redirect to="/login" />
           }} 
