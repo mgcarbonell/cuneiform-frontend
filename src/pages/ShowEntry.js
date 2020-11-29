@@ -33,7 +33,7 @@ const ShowEntry = (props) => {
 
   useEffect(() => {
     loadComments()
-  }, [comments])
+  }, [])
 
 
   const handleToggle = () => {
