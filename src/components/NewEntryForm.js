@@ -27,7 +27,7 @@ const NewEntry = (props) => {
   const [body, setBody] = useState();
   const [promptId, setPromptId] = useState();
   const [quote, setQuote] = useState();
-  const [isPublic, setIsPublic] = useState();
+  const [isPublic, setIsPublic] = useState(true);
   const [state, setState] = useState({
     checkedB: false
   });
@@ -127,16 +127,24 @@ const NewEntry = (props) => {
                 />
               </div>
               <Grid>
-                {!state.isPublic
-                
-                }
-                <Switch
-                  checked={state.isPublic}
-                  onChange={handleChange}
-                  color="primary"
-                  name="checkedB"
-                  label="Public or Private"
-                />
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <Grid item>Private</Grid>
+                  <Grid item>
+                    <Switch
+                      checked={isPublic}
+                      onChange={() => setIsPublic(!isPublic)}
+                      color="primary"
+                      name="privacy"
+                      label="publicOrPrivate"
+                    />
+                  </Grid>
+                  <Grid item> Public</Grid>
+                </Grid>
               </Grid>
 
               <Button 

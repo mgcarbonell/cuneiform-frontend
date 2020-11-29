@@ -2,8 +2,18 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NewEntryDialog from './NewEntryDialog';
 import NewEntryForm from './NewEntryForm';
-import { AppBar, Toolbar, Button, IconButton, MenuItem, Menu } from '@material-ui/core';
+import { 
+              AppBar, 
+              Toolbar, 
+              Button, 
+              IconButton, 
+              MenuItem, 
+              Menu,
+              Switch, 
+              Grid } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import Brightness7Icon from '@material-ui/icons/Brightness7'
+import Brightness4Icon from '@material-ui/icons/Brightness4'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -38,35 +48,31 @@ const Navbar = (props) => {
               </Button>
             </Link>
             <Grid
-                component="label"
-                container
-                alignItems="center"
-                spacing={2}
-              >
-                <Grid item>
-                  <Brightness7Icon 
-                    fontSize="small"
-                  />
-                </Grid>
-                <Grid item>
-                  <Switch size="small" checked={props.darkMode} onChange={() => props.setDarkMode(!props.darkMode)} />
-                </Grid>
-                <Grid item>
-                  <Brightness4Icon 
-                    fontSize="small"
-                  />
-                </Grid>
+              component="label"
+              container
+              alignItems="center"
+              spacing={2}
+            >
+              <Grid item>
+                <Brightness7Icon fontSize="small"/>
               </Grid>
+              <Grid item>
+                <Switch size="small" checked={props.darkMode} onChange={() => props.setDarkMode(!props.darkMode)} />
+              </Grid>
+              <Grid item>
+                <Brightness4Icon 
+                  fontSize="small"
+                />
+              </Grid>
+            </Grid>
+            <Grid
+              container
+              direction="row-reverse"
+              justify="flex-start"
+              alignItems="center"
+            >
               { props.currentUser ? 
                 <>
-                  <Button 
-                    color="primary" 
-                    variant="contained"
-                    onClick={() => setOpenDialog(true)}
-                    aria-label="create a new entry"
-                  >
-                    New Entry
-                  </Button>
                   <IconButton
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
@@ -80,12 +86,10 @@ const Navbar = (props) => {
                     id="menu-appbar"
                     anchorEl={anchorEl}
                     anchorOrigin={{
-                      verticle: 'top',
                       horizontal: 'right'
                     }}
                     keepMounted
                     transformOrigin={{
-                      vertical: 'top',
                       horizontal: 'right',
                     }}
                     open={open}
@@ -98,6 +102,14 @@ const Navbar = (props) => {
                       Logout
                     </MenuItem>
                   </Menu>
+                  <Button 
+                    color="primary" 
+                    variant="contained"
+                    onClick={() => setOpenDialog(true)}
+                    aria-label="create a new entry"
+                  >
+                    New Entry
+                  </Button>
                 </>
               :
                 <>
@@ -113,6 +125,7 @@ const Navbar = (props) => {
                   </Link>
                 </>
               }
+          </Grid>
         </Toolbar>
       </AppBar>
       <NewEntryDialog

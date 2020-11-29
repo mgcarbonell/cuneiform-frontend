@@ -15,6 +15,7 @@ const ShowEntry = (props) => {
   const [entry, setEntry] = useState([]);
   const [formToggle, setFormToggle] = useState(false);
   const [comments, setComments] = useState([]);
+  const [confirmOpen, setConfirmOpen] = useState(false)
   
   const { id } = useParams()
 

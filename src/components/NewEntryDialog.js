@@ -9,17 +9,9 @@ import {
               // makeStyles 
             } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close'
-// import DialogActions from '@material-ui/core/DialogActions';
-// import DialogContentText from '@material-ui/core/DialogContentText';
 
 // const useStyles = makeStyles(theme => ({
-//   dialogWrapper: {
-//     padding: theme.spacing(2),
-//   }
-//     dialogTitle: {
-//       paddingRight: '0px',
-      
-//     }
+
 // }))
 
 const NewEntryDialog = (props) => {
