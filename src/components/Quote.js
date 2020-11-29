@@ -17,8 +17,7 @@ const Quote = () => {
 
   return(
     <div>
-      {quote.content}
-      - by {quote.originator.name}
+      {quote.content} - by {quote.originator.name}
     </div>
   )
 

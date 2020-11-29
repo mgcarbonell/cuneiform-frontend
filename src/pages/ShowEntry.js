@@ -9,6 +9,7 @@ import CompleteEntry from '../components/CompleteEntry';
 import EditEntryForm from '../components/EditEntryForm';
 import Comments from '../components/Comments';
 import CommentForm from '../components/CommentForm';
+import ConfirmDialog from '../components/ConfirmDialog'
 
 const ShowEntry = (props) => {
   const [entry, setEntry] = useState([]);
@@ -42,9 +43,9 @@ const ShowEntry = (props) => {
 
   const handleDelete = () => {
     EntryModel.delete(entry, entry.id)
-      .then(() =>
+      .then(
         props.history.push('/profile')
-      )
+        )
   }
 
   return (
@@ -70,9 +71,17 @@ const ShowEntry = (props) => {
           <IconButton onClick={handleToggle}>
             <EditIcon />
           </IconButton>
-          <IconButton onClick={handleDelete}>
+          <IconButton aria-label="delete" onClick={() => setConfirmOpen(true)}>
             <DeleteIcon />
           </IconButton>
+          <ConfirmDialog
+              title="Delete Post?"
+              open={confirmOpen}
+              setOpen={setConfirmOpen}
+              onConfirm={handleDelete}
+          >
+            Do you really want to delete this entry?
+          </ConfirmDialog>
         </>  
       }
       </Grid>

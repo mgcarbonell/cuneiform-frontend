@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Header from './components/Header'
+import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Routes from './config/Routes'
 import './App.css'
@@ -68,7 +68,7 @@ function App() {
       >
         <CssBaseline />
         <Paper style={{ height: "100vh" }}>
-          <Header 
+          <Navbar 
             currentUser={ currentUser } 
             currentUsername={ currentUsername } 
             logout={ logout }
