@@ -8,9 +8,11 @@ import {
               Button, 
               IconButton, 
               MenuItem, 
-              Menu, 
+              Menu,
+              Switch, 
               Grid } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import { Brightness7Icon, Brightness4Icon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -39,16 +41,30 @@ const Navbar = (props) => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Link to={'/'}>
-            <Button>
-              Home
-            </Button>
-          </Link>
+            <Link to={'/'}>
+              <Button>
+                Home
+              </Button>
+            </Link>
             <Grid
-              container
-              alignItems="center"
-              direction="row-reverse"
-            >
+                component="label"
+                container
+                alignItems="center"
+                spacing={2}
+              >
+                <Grid item>
+                  <Brightness7Icon fontSize="small"/>
+                </Grid>
+                <Grid item>
+                  <Switch size="small" checked={props.darkMode} onChange={() => props.setDarkMode(!props.darkMode)} />
+                </Grid>
+                <Grid item>
+                  <Brightness4Icon 
+                    fontSize="small"
+                  />
+                </Grid>
+            </Grid>
+            <Grid>
               { props.currentUser ? 
                 <>
                   <IconButton
