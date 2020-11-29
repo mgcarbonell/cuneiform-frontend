@@ -14,6 +14,7 @@ const ShowEntry = (props) => {
   const [entry, setEntry] = useState([]);
   const [formToggle, setFormToggle] = useState(false);
   const [comments, setComments] = useState([]);
+  // const [comment, setComment] = useState());
   
   const { id } = useParams()
 
@@ -32,7 +33,7 @@ const ShowEntry = (props) => {
 
   useEffect(() => {
     loadComments()
-  }, [])
+  }, [comments])
 
 
   const handleToggle = () => {
@@ -85,12 +86,13 @@ const ShowEntry = (props) => {
       <CommentForm 
         entryId={ id } 
         loadComments={ loadComments }
-        comments={ props.comments }
+        comments={ comments }
       />
       
       <Comments
         comments={ comments }
         setComments={ setComments }
+        loadComments={ loadComments }
       />
     </>
   );

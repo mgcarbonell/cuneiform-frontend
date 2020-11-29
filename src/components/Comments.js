@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CommentModel from '../models/comment';
 import { Grid, IconButton, Paper } from '@material-ui/core';
-// import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
-const Comments = ({ comment, comments }) => {
-  console.log(comments)
-  // const [comment, setComment] = useState(true);
-  
-  const handleCommentDelete = () => {
-    CommentModel.delete(comment, comment.id)
-      .then(data =>
-        console.log(data))
+const Comments = ({ comments, loadComments, setComments }) => {
+const [comment] = useState();
+
+  const handleCommentDelete = (commentId) => {
+    CommentModel.delete(comment, commentId)
+      .then(
+        setComments(comments.filter(comment => comment.id !== commentId)
+      )).then(
+        loadComments()
+      )
   }
 
   return(
@@ -28,10 +29,7 @@ const Comments = ({ comment, comments }) => {
           >
             <h3 key={comment.id}>{comment.userId}</h3>
             <p>{comment.body}</p>
-            {/* <IconButton onClick={handleCommentFormToggle}>
-            <EditIcon />
-            </IconButton> */}
-            <IconButton onClick={handleCommentDelete}>
+            <IconButton onClick={ () => handleCommentDelete(comment.id) }>
             <DeleteIcon />
             </IconButton>
           </Paper>
