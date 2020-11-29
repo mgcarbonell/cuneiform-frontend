@@ -1,8 +1,21 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import UserModel from '../models/user'
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
 
 const Login = props => {
+  const classes = useStyles();
+
   let [email, setEmail] = useState('')
   let [password, setPassword] = useState('')
 
@@ -38,30 +51,31 @@ const Login = props => {
   return (
     <div>
       <h4>Login</h4>
-      <form onSubmit={ handleSubmit }>
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Email</label>
-          <input 
-            onChange={ handleEmail } 
-            value={ email } 
-            type="email" 
+          <TextField 
+            onChange={ handleEmail }
+            value={ email }
+            type="email"
             id="email" 
-            name="email" 
-            required  
+            name="email"
+            label="Email" 
+            variant="filled" 
+            required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input 
-            onChange={ handlePassword } 
-            value={ password } 
-            type="password" 
-            id="password" 
-            name="password" 
-            required
-          />
-        
+        <TextField
+          onChange={ handlePassword }
+          value={ password }
+          type="password"
+          id="password"
+          name="password"
+          label="Password"
+          variant="filled"
+          required
+        />        
         </div>
         <button type="submit">Login</button>
       </form>

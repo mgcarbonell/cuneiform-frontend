@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, IconButton, Grid } from '@material-ui/core';
 import EntryModel from '../models/entry';
 import EditIcon from '@material-ui/icons/Edit';
@@ -8,6 +8,7 @@ import CompleteEntry from '../components/CompleteEntry';
 import EditEntryForm from '../components/EditEntryForm';
 import Comments from '../components/Comments';
 import CommentForm from '../components/CommentForm';
+import ConfirmDialog from '../components/ConfirmDialog'
 // import material styling from @material-ui
 
 const ShowEntry = (props) => {
@@ -15,6 +16,7 @@ const ShowEntry = (props) => {
   const [entry, setEntry] = useState([]);
   const [formToggle, setFormToggle] = useState(false);
   const [commentFormToggle, setCommentFormToggle] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   let userId = localStorage.getItem('id')
 
@@ -24,20 +26,15 @@ const ShowEntry = (props) => {
       .then(data => setEntry(data.entry))
   }, [props.match.params.id])
 
-  useEffect(() => {
-    EntryModel.update(props.match.params.id)
-    .then(data => setEntry)
-  }, [])
-
   const handleToggle = () => {
     setFormToggle(true)
   }
 
   const handleDelete = () => {
     EntryModel.delete(entry, entry.id)
-      .then(data =>
-        props.history.push('Home')
-      )
+      .then(
+        props.history.push('/profile')
+        )
   }
 
   // comment models hooks and functions
@@ -66,9 +63,17 @@ const ShowEntry = (props) => {
           <IconButton onClick={handleToggle}>
             <EditIcon />
           </IconButton>
-          <IconButton onClick={handleDelete}>
+          <IconButton aria-label="delete" onClick={() => setConfirmOpen(true)}>
             <DeleteIcon />
           </IconButton>
+          <ConfirmDialog
+              title="Delete Post?"
+              open={confirmOpen}
+              setOpen={setConfirmOpen}
+              onConfirm={handleDelete}
+          >
+            Do you really want to delete this entry?
+          </ConfirmDialog>
         </>  
       :
         <>

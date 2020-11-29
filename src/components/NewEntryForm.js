@@ -4,6 +4,7 @@ import Prompt from '../components/Prompt'
 import Quote from '../components/Quote'
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Grid, Paper, TextField, Switch } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,15 +32,15 @@ const NewEntry = (props) => {
     checkedB: false
   });
   
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let userId = localStorage.getItem("id")
   
     EntryModel.create({ title, body, userId, promptId, quote, isPublic })
-      .then(data => {
-        props.history.push('/profile')
-      })
+        history.push('/profile')
+        props.setOpenDialog(false)
   }
 
   const handleChange = (event) => {
@@ -47,7 +48,7 @@ const NewEntry = (props) => {
   };
 
   return (
-    <div style={{ padding: 50 }}>
+    <div style={{ padding: 20 }}>
       <Grid
         container
         direction="column"
@@ -56,18 +57,16 @@ const NewEntry = (props) => {
       >
         <Paper>
 
-          <Paper 
-            elevation={3}
-          >
+          <Paper elevation={3}>
             {!state.checkedB ?
             <Prompt 
-            aria-label="A writing prompt"
-            value={promptId}
+              aria-label="A writing prompt"
+              value={promptId}
             />
             :
             <Quote 
-            aria-label="A quote for you to write about" 
-            value={quote}
+              aria-label="A quote for you to write about" 
+              value={quote}
             />
             }
           </Paper>
@@ -81,13 +80,12 @@ const NewEntry = (props) => {
             <Grid item>Prompt</Grid>
             <Grid item>
               <Switch
-              checked={state.checkedB}
-              onChange={handleChange}
-              color="primary"
-              name="checkedB"
-              label="Quote or Prompt"
-              inputProps={{ 'aria-label': 'primary checkbox for a quote or a prompt' }}
-            />
+                checked={state.checkedB}
+                onChange={handleChange}
+                color="primary"
+                name="checkedB"
+                label="Quote or Prompt"
+              />
             </Grid>
             <Grid item>Quote</Grid>
           </Grid>
@@ -121,29 +119,33 @@ const NewEntry = (props) => {
                   id="outlined-multiline-static"
                   label="Write Away"
                   multiline
-                  rows={40}
+                  rows={20}
                   value={body}
                   type="text"
                   onInput={ e => setBody(e.target.value)}
                   variant="outlined"
                 />
               </div>
+              <Grid>
+                {!state.isPublic
+                
+                }
+                <Switch
+                  checked={state.isPublic}
+                  onChange={handleChange}
+                  color="primary"
+                  name="checkedB"
+                  label="Public or Private"
+                />
+              </Grid>
 
               <Button 
                 type="submit"
                 className={classes.button}
-                onClick={ e => setIsPublic(false)}
               >
-                Private
+                Submit
               </Button>
-              <Button 
-                type="submit"
-                className={classes.button}
-                onClick={ e => setIsPublic(true)}
-              >
-                Public
-              </Button>
-              </form>
+            </form>
           </Grid>
         </Paper>
       </Grid>
