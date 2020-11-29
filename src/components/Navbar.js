@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NewEntryDialog from './NewEntryDialog';
 import NewEntryForm from './NewEntryForm';
-import { AppBar, Toolbar, Button, IconButton, MenuItem, Menu } from '@material-ui/core';
+import { 
+              AppBar, 
+              Toolbar, 
+              Button, 
+              IconButton, 
+              MenuItem, 
+              Menu, 
+              Grid } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -32,21 +39,18 @@ const Navbar = (props) => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-            <Link to={'/'}>
-              <Button>
-                Home
-              </Button>
-            </Link>
+          <Link to={'/'}>
+            <Button>
+              Home
+            </Button>
+          </Link>
+            <Grid
+              container
+              alignItems="center"
+              direction="row-reverse"
+            >
               { props.currentUser ? 
                 <>
-                  <Button 
-                    color="primary" 
-                    variant="contained"
-                    onClick={() => setOpenDialog(true)}
-                    aria-label="create a new entry"
-                  >
-                    New Entry
-                  </Button>
                   <IconButton
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
@@ -78,6 +82,14 @@ const Navbar = (props) => {
                       Logout
                     </MenuItem>
                   </Menu>
+                  <Button 
+                    color="primary" 
+                    variant="contained"
+                    onClick={() => setOpenDialog(true)}
+                    aria-label="create a new entry"
+                  >
+                    New Entry
+                  </Button>
                 </>
               :
                 <>
@@ -93,6 +105,7 @@ const Navbar = (props) => {
                   </Link>
                 </>
               }
+          </Grid>
         </Toolbar>
       </AppBar>
       <NewEntryDialog

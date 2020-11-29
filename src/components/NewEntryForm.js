@@ -127,16 +127,23 @@ const NewEntry = (props) => {
                 />
               </div>
               <Grid>
-                {!state.isPublic
-                
-                }
-                <Switch
-                  checked={state.isPublic}
-                  onChange={handleChange}
-                  color="primary"
-                  name="checkedB"
-                  label="Public or Private"
-                />
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <Grid item>Public</Grid>
+                  <Grid item>
+                    <Switch
+                      checked={state.isPublic}
+                      color="primary"
+                      name="checkedB"
+                      label="publicOrPrivate"
+                    />
+                  </Grid>
+                  <Grid item> Private</Grid>
+                </Grid>
               </Grid>
 
               <Button 
