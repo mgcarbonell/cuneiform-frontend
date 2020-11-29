@@ -37,7 +37,7 @@ const EntryList = (props) => {
             </Link>
           </Paper>
         </Grid>
-      )).reverse()}
+      ))}
     </>
   )
 

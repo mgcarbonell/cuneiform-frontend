@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
 import CommentModel from '../models/comment';
-import { Grid, IconButton, Paper } from '@material-ui/core';
+import { Grid, IconButton, makeStyles, Paper } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // display: 'flex',
+    wordWrap: 'break-word',
+    // flexWrap: 'wrap',
+    flexGrow: 1,
+    '& > *': {
+      margin: theme.spacing(5),
+      width: theme.spacing(50),
+    },
+  },
+  paper: {
+    margin: 'auto',
+  },
+  
+}))
+
 
 
 const Comments = ({ comments, loadComments, setComments }) => {
-const [comment] = useState();
+  const [comment] = useState();
+
+  const classes = useStyles();
 
   const handleCommentDelete = (commentId) => {
     CommentModel.delete(comment, commentId)
@@ -17,25 +37,35 @@ const [comment] = useState();
   }
 
   return(
-    <>
-      <Grid>
+    <div className={ classes.root }>
+      <Grid
+        justify="center"
+        alignItems="center"
+      >
         { comments.map((comment) => (
           <Paper
           elevation={1} 
           style={{
+          textAlign: "center",
           padding: 10,
           paddingBottom: 20
           }}
           >
-            <h3 key={comment.id}>{comment.userId}</h3>
-            <p>{comment.body}</p>
-            <IconButton onClick={ () => handleCommentDelete(comment.id) }>
-            <DeleteIcon />
-            </IconButton>
+            <Grid item>
+              <h3 key={comment.id}>{comment.userId}</h3>
+            </Grid>
+            <Grid item>
+              <p>{comment.body}</p>
+            </Grid>
+            <Grid item>
+              <IconButton onClick={ () => handleCommentDelete(comment.id) }>
+              <DeleteIcon />
+              </IconButton>
+            </Grid>
           </Paper>
-        )).reverse()}
+        ))}
       </Grid>
-    </>
+    </div>
   )
 }
 

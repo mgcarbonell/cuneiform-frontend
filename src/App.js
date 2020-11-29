@@ -18,16 +18,19 @@ function App() {
         light: '#d7f9f1',
         main: '#b2edf2',
         dark: '#C1B4B6',
-        contrastText: '#000',
+        contrastText: '#000'
       },
       secondary: {
         light: '#fffafd',
         main: '#fff2f2',
         dark: '#ccbfbf',
-        contrastText: "#000",
+        contrastText: '#000'
       },
       paper: {
         main: '#fbf4ec',
+      },
+      background: {
+        default: '#e4f0e2'
       }
     }
   })
@@ -35,6 +38,14 @@ function App() {
   const darkTheme = createMuiTheme({
     palette: {
       type: 'dark',
+      primary: {
+        main: '#D7F9F1',
+        contrastText: '#000'
+      },
+      secondary: {
+        main: '#ff4400',
+        constrastText: '000'
+      } 
     }
   })
   
