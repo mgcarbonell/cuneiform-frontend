@@ -12,7 +12,8 @@ import {
               Switch, 
               Grid } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
-import { Brightness7Icon, Brightness4Icon } from '@material-ui/icons'
+import Brightness7Icon from '@material-ui/icons/Brightness7'
+import Brightness4Icon from '@material-ui/icons/Brightness4'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,24 +48,29 @@ const Navbar = (props) => {
               </Button>
             </Link>
             <Grid
-                component="label"
-                container
-                alignItems="center"
-                spacing={2}
-              >
-                <Grid item>
-                  <Brightness7Icon fontSize="small"/>
-                </Grid>
-                <Grid item>
-                  <Switch size="small" checked={props.darkMode} onChange={() => props.setDarkMode(!props.darkMode)} />
-                </Grid>
-                <Grid item>
-                  <Brightness4Icon 
-                    fontSize="small"
-                  />
-                </Grid>
+              component="label"
+              container
+              alignItems="center"
+              spacing={2}
+            >
+              <Grid item>
+                <Brightness7Icon fontSize="small"/>
+              </Grid>
+              <Grid item>
+                <Switch size="small" checked={props.darkMode} onChange={() => props.setDarkMode(!props.darkMode)} />
+              </Grid>
+              <Grid item>
+                <Brightness4Icon 
+                  fontSize="small"
+                />
+              </Grid>
             </Grid>
-            <Grid>
+            <Grid
+              container
+              direction="row-reverse"
+              justify="flex-start"
+              alignItems="center"
+            >
               { props.currentUser ? 
                 <>
                   <IconButton
@@ -80,12 +86,10 @@ const Navbar = (props) => {
                     id="menu-appbar"
                     anchorEl={anchorEl}
                     anchorOrigin={{
-                      verticle: 'top',
                       horizontal: 'right'
                     }}
                     keepMounted
                     transformOrigin={{
-                      vertical: 'top',
                       horizontal: 'right',
                     }}
                     open={open}
