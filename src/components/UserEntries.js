@@ -40,7 +40,7 @@ const UserEntries = (props) => {
 
   return (
     <div className={classes.root}>
-      {entries.map((entry) => (
+      {entries && entries.map((entry) => (
         <Paper 
           className={classes.paper}
           elevation={1}
