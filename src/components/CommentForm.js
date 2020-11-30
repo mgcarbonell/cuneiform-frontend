@@ -6,8 +6,8 @@ import { Button, TextField } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '70ch',
+      margin: theme.spacing(3),
+      width: 300,
     },
   },
 }));
