@@ -37,7 +37,7 @@ function App() {
     },
     typography: {
       fontFamily: font,
-      fontSize: 13,
+      fontSize: 13
     }
   })
   
