@@ -28,10 +28,16 @@ We hope to foster creative writers, people who wish to jot down their thoughts, 
 
 * Why Paper won't do everything we want it to do in regards to lay out on the page.
 * Saving quote or prompt to the entry database.
+* Matching a userId from the entry database to the username from the user database.
 
 ## Future Enhancements
 
 Please see our backlog on our Trello. 
+
+## Code snippets
+
+![Randomization for prompt](./public/randomization-for-prompt.png) Mario Carbonell
+![Comments](./public/comments.png) Devin Blair
 
 ## About Us
 

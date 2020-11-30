@@ -40,7 +40,7 @@ const UserEntries = (props) => {
 
   return (
     <div className={classes.root}>
-      {entries.map((entry) => (
+      {entries && entries.map((entry) => (
         <Paper 
           className={classes.paper}
           elevation={1}
@@ -53,10 +53,10 @@ const UserEntries = (props) => {
           <Typography component="h3" variant="h6" key={entry.id}>
           {entry.title}
         </Typography>
-        <Typography component="h5" variant="body1">
+        <Typography component="h5" variant="body1" key={entry.userId}>
           By {entry.userId}
         </Typography>
-        <Typography compoment="p" variant="body1">
+        <Typography compoment="p" variant="body1" key={entry.body}>
           {entry.body}
         </Typography>
         <Link to={`/entry/${entry.id}`}>
