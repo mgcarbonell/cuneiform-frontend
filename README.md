@@ -20,6 +20,10 @@ We hope to foster creative writers, people who wish to jot down their thoughts, 
 * Material-UI
 * Quote API provided by [Rakuten](https://english.api.rakuten.net/) and [Quotes](https://english.api.rakuten.net/martin.svoboda/api/quotes15).
 
+## Link to our backend
+
+https://github.com/mgcarbonell/cuneiform-backend
+
 ## Getting Started
 
 [Our Trello](https://trello.com/b/jJX36PQ2/cuneiform)

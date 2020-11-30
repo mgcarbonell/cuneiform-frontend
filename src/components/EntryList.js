@@ -60,9 +60,9 @@ const EntryList = (props) => {
               <Typography component="h3" variant="h6" key={entry.id}>
                 {entry.title}
               </Typography>
-              <Typography component="h5" variant="p" key={entry.userId}>
+              {/* <Typography component="h5" variant="p" key={entry.userId}>
                 By {entry.userId}
-              </Typography>
+              </Typography> */}
               <Divider variant="middle" />
               <Typography className={classes.typography} component="p" variant="body1" style={{ textAlign: "justify" }}>
                 {entry.body.split(' ').splice(0, 100).join(' ')}...
