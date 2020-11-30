@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 // import { useHistory } from "react-router-dom";
 import EntryModel from '../models/entry';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Grid, Paper, TextField } from '@material-ui/core';
+import { 
+              Button, 
+              Grid, 
+              Paper, 
+              TextField, 
+              Switch 
+            } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,22 +87,33 @@ const EditEntryForm = (props) => {
                   variant="outlined"
                 />
               </div>
+                <Grid>
+                  <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                  >
+                    <Grid item>Private</Grid>
+                    <Grid item>
+                      <Switch
+                        checked={isPublic}
+                        onChange={() => setIsPublic(!isPublic)}
+                        color="primary"
+                        name="privacy"
+                        label="publicOrPrivate"
+                      />
+                    </Grid>
+                    <Grid item> Public</Grid>
+                  </Grid>
+                </Grid>
 
-              <Button 
-                type="submit"
-                className={classes.button}
-                onClick={ e => setIsPublic(false)}
-              >
-                Private
-              </Button>
-              <Button 
-                type="submit"
-                className={classes.button}
-                onClick={ e => setIsPublic(true)}
-                aria-label="submit edited entry"
-              >
-                Public
-              </Button>
+                <Button 
+                  type="submit"
+                  className={classes.button}
+                >
+                    Submit
+                </Button>
               </form>
           </Grid>
         </Paper>

@@ -18,9 +18,7 @@ function App() {
   const lightTheme = createMuiTheme({
     palette: {
       primary: {
-        light: '#d7f9f1',
-        main: '#b2edf2',
-        dark: '#C1B4B6',
+        main: '#C6AB83',
         contrastText: '#000'
       },
       secondary: {
@@ -30,7 +28,7 @@ function App() {
         contrastText: '#000'
       },
       background: {
-        default: '#e4f0e2'
+        default: '#fffaf0'
       },
     },
     typography: {
@@ -43,7 +41,7 @@ function App() {
     palette: {
       type: 'dark',
       primary: {
-        main: '#D7F9F1',
+        main: '#C4D8E7',
         contrastText: '#000'
       },
       secondary: {
@@ -86,7 +84,7 @@ function App() {
         theme={ darkMode ? darkTheme : lightTheme } 
       >
         <CssBaseline />
-        <Paper style={{ height: "100vh" }}>
+        <Paper>
           <Navbar 
             currentUser={ currentUser } 
             currentUsername={ currentUsername } 

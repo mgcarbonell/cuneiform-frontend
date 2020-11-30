@@ -20,24 +20,7 @@ const Home = (props) => {
 
   return (
     <div className={classes.root}>
-    <EntryList />
-    { props.currentUser ?
-    <>
-      <Link to={'/NewEntryForm'}>
-        <Button color="primary" variant="contained">
-          New Entry
-        </Button>
-      </Link>
-    </>
-    :
-    <>
-      <Link to={'/Entry'}>
-        <Button color="primary" variant="contained">
-          Public Entries
-        </Button>
-      </Link>
-    </>
-    }
+      <EntryList />
     </div>
   )
 }
