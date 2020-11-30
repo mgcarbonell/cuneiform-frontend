@@ -18,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = props => {
 
-  // const [entries, setEntries] = useState([])
+  const [entries, setEntries] = useState([])
 
-  // useEffect(() => {
-  //   EntryModel.user(props.currentUser)
-  //     .then(data => setEntries(data.entries))
-  // }, [props.currentUser])
+  useEffect(() => {
+    EntryModel.user(props.currentUser)
+      .then(data => setEntries(data.entries))
+  }, [props.currentUser])
 
   return (
     <>
