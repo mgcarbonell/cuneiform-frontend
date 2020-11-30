@@ -89,7 +89,7 @@ function App() {
         theme={ darkMode ? darkTheme : lightTheme } 
       >
         <CssBaseline />
-        <Paper style={{ height: "100vh" }}>
+        <Paper>
           <Navbar 
             currentUser={ currentUser } 
             currentUsername={ currentUsername } 
