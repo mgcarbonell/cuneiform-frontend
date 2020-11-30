@@ -12,32 +12,53 @@ function App() {
   const [currentUsername, setCurrentUsername] = useState(localStorage.getItem('username'));
   const [darkMode, setDarkMode] = useState(false);
 
+  const font = "'Montserrat', sans-serif";
+
   const lightTheme = createMuiTheme({
     palette: {
       primary: {
         light: '#d7f9f1',
         main: '#b2edf2',
         dark: '#C1B4B6',
-        contrastText: '#000',
+        contrastText: '#000'
       },
       secondary: {
         light: '#fffafd',
         main: '#fff2f2',
         dark: '#ccbfbf',
-        contrastText: "#000",
+        contrastText: '#000'
       },
-      paper: {
-        main: '#fbf4ec',
-      }
+      card: {
+        maxWidth: "60%"
+      },
+      background: {
+        default: '#e4f0e2'
+      },
+    },
+    typography: {
+      fontFamily: font,
+      fontSize: 13
     }
   })
   
   const darkTheme = createMuiTheme({
     palette: {
       type: 'dark',
+      primary: {
+        main: '#D7F9F1',
+        contrastText: '#000'
+      },
+      secondary: {
+        main: '#ff4400',
+        constrastText: '000'
+      }
+    },
+    typography: {
+      fontFamily: font,
+      fontSize: 13,
     }
   })
-  
+
   const storeUser = (userId) => {
     localStorage.setItem('id', userId)
     setCurrentUser( userId )

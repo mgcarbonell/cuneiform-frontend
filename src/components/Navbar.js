@@ -21,22 +21,17 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-
 const Navbar = (props) => {
-
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
   const open = Boolean(anchorEl);
-
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null)
   };
-
 
   return (
     <div className={classes.root}>
@@ -57,7 +52,10 @@ const Navbar = (props) => {
                 <Brightness7Icon fontSize="small"/>
               </Grid>
               <Grid item>
-                <Switch size="small" checked={props.darkMode} onChange={() => props.setDarkMode(!props.darkMode)} />
+                <Switch size="small" 
+                  checked={props.darkMode}
+                  onChange={() => props.setDarkMode(!props.darkMode)} 
+                />
               </Grid>
               <Grid item>
                 <Brightness4Icon 

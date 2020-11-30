@@ -21,13 +21,13 @@ const ShowEntry = (props) => {
 
   let userId = localStorage.getItem('id')
 
-  // entry model show
+  // show current user entry
   useEffect(() => {
     EntryModel.show(props.match.params.id)
       .then(data => setEntry(data.entry))
   }, [props.match.params.id])
 
-  // comment model show
+  // show comments for entry
   const loadComments = async () => {
     const data = await CommentModel.show(id)
     setComments(data.comments)
@@ -42,6 +42,7 @@ const ShowEntry = (props) => {
     setFormToggle(true)
   }
 
+  // delete entry
   const handleDelete = () => {
     EntryModel.delete(entry, entry.id)
       .then(
@@ -50,7 +51,10 @@ const ShowEntry = (props) => {
   }
 
   return (
-    <>
+    <Grid
+      justify="center"
+      alignItems="center"
+    >
       <Grid item xs={12}>
       { formToggle ?
         <EditEntryForm
@@ -104,7 +108,7 @@ const ShowEntry = (props) => {
         setComments={ setComments }
         loadComments={ loadComments }
       />
-    </>
+    </Grid>
   );
 }
 
