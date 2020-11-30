@@ -20,7 +20,17 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  homeButton: {
+    marginRight: '1rem',
+  },
+  profileButton: {
+    marginLeft: '1rem'
+  },
+  newEntryButton: {
+    marginRight: '1rem'
+  }
 }));
+
 const Navbar = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -38,7 +48,7 @@ const Navbar = (props) => {
       <AppBar position="static">
         <Toolbar>
             <Link to={'/'}>
-              <Button>
+              <Button className={classes.homeButton}>
                 Home
               </Button>
             </Link>
@@ -72,6 +82,7 @@ const Navbar = (props) => {
               { props.currentUser ? 
                 <>
                   <IconButton
+                    className={classes.profileButton}
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
@@ -101,6 +112,7 @@ const Navbar = (props) => {
                     </MenuItem>
                   </Menu>
                   <Button 
+                    className={classes.newEntryButton}
                     color="primary" 
                     variant="contained"
                     onClick={() => setOpenDialog(true)}
@@ -131,9 +143,7 @@ const Navbar = (props) => {
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
       >
-        <NewEntryForm
-          setOpenDialog={setOpenDialog}
-        />
+        <NewEntryForm setOpenDialog={setOpenDialog}/>
       </NewEntryDialog>
     </div>
   );
