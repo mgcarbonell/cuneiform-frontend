@@ -1,6 +1,6 @@
 import React from 'react';
 import UserEntries from '../components/UserEntries';
-import { makeStyles } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,13 +15,15 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Profile = props => {
+  const classes = useStyles();
+
   return (
-    <>
+    <Grid className={ classes.root }>
       <h1>Profile of { props.currentUsername }</h1>
       <UserEntries
         currentUser={ props.currentUser }         
       />
-    </>
+    </Grid>
   )
 }
 

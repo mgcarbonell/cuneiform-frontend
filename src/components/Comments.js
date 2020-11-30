@@ -60,7 +60,6 @@ const Comments = ({ comments, loadComments, setComments }) => {
             style={{
             display:"inline-block",
             textAlign: "center",
-            
             }}
             >
               <div className={classes.content}>

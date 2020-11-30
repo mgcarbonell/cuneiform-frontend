@@ -36,6 +36,9 @@ function App() {
     typography: {
       fontFamily: font,
       fontSize: 13
+    },
+    paper: {
+      backgroundColor: '#fffaf0',
     }
   })
   
@@ -86,7 +89,7 @@ function App() {
         theme={ darkMode ? darkTheme : lightTheme } 
       >
         <CssBaseline />
-        <Paper style={{ height: "100vh" }}>
+        <Paper>
           <Navbar 
             currentUser={ currentUser } 
             currentUsername={ currentUsername } 
@@ -103,11 +106,11 @@ function App() {
             />
           </Grid>
         </Paper>
-      <Footer style={{ flex: 1, flexDirection: "row", justifyContent: "space-around" }}>
-        <Link to={'/About'} style={{ padding: 5 }}>About</Link>
-        <Link to={'/Contact'} style={{ padding: 5 }}>Contact</Link>
-        <Link to={'/Help'} style={{ padding: 5 }}>Help</Link>
-      </Footer>
+        <Footer style={{ flex: 1, flexDirection: "row", justifyContent: "space-around" }}>
+          <Link to={'/About'} style={{ padding: 5 }}>About</Link>
+          <Link to={'/Contact'} style={{ padding: 5 }}>Contact</Link>
+          <Link to={'/Help'} style={{ padding: 5 }}>Help</Link>
+        </Footer>
       </ThemeProvider>
     </div>
   );
