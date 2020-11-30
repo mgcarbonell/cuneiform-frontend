@@ -39,6 +39,11 @@ Please see our backlog on our Trello.
 ![Randomization for prompt by Mario](./public/randomization-for-prompt.png)
 ![Comments by Devin](./public/comments.png)
 
+## Design Concepts
+
+![beiges from British Museum](./public/design-from-british-museum1.png)
+![blues from British Museum](./public/design-from-british-museum2.png)
+
 ## About Us
 
 We are two Software Engineers from General Assembly's Software Engineering Immersive, check us out!
