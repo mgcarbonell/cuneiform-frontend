@@ -46,7 +46,7 @@ const ShowEntry = (props) => {
   const handleDelete = () => {
     EntryModel.delete(entry, entry.id)
       .then(
-        props.history.push('/profile')
+        props.history.push('/')
         )
   }
 
