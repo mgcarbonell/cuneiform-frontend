@@ -8,6 +8,15 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiTextField-root': {
       margin: theme.spacing(3),
       width: 300,
+      [theme.breakpoints.down('sm')]: {
+        width: 300,
+      },
+      [theme.breakpoints.up('md')]: {
+        width: 400,
+      },
+      [theme.breakpoints.up('lg')]: {
+        width: 500,
+      }
     },
   },
 }));

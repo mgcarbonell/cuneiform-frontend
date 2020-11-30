@@ -4,25 +4,27 @@ import { Button, makeStyles, Paper, Typography } from '@material-ui/core';
 import EntryModel from '../models/entry';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    flexDirection: 'column',
+    wordWrap: 'break-word',
+    justifyItems: 'center',
+    flexGrow: 1,
+    '& > *': {
+      margin: theme.spacing(.7),
+    },
+  },
   paper: {
     width: 300,
     [theme.breakpoints.down('sm')]: {
       width: 300,
-      height: 200
     },
     [theme.breakpoints.up('md')]: {
-      width: 500,
+      width: 700,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 700
+      width: 1200
     }
   },
-  content: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    margin: '0px 20px 0px 20px'
-  }
 }))
 
 const UserEntries = (props) => {

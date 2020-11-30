@@ -51,6 +51,7 @@ const EntryList = (props) => {
           className={classes.paper}
           elevation={3} 
           style={{
+          display: "inline-block",
           padding: 10,
           paddingBottom: 20
           }}

@@ -21,18 +21,18 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('md')]: {
       width: 400,
-      height: 120
+      height: 90
     },
     [theme.breakpoints.up('lg')]: {
       width: 500,
-      height: 150
+      height: 100
     }
   },
   content: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    margin: '0px 20px 0px 20px'
+    margin: '20px'
   }
 }))
 
@@ -60,7 +60,7 @@ const Comments = ({ comments, loadComments, setComments }) => {
             style={{
             display:"inline-block",
             textAlign: "center",
-            padding: 15
+            
             }}
             >
               <div className={classes.content}>
