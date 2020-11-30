@@ -64,9 +64,9 @@ const Comments = ({ comments, loadComments, setComments }) => {
             >
               <div className={classes.content}>
                 <Grid item>
-                  <Typography component="h3" variant="h6" key={comment.id}>
+                  {/* <Typography component="h3" variant="h6" key={comment.id}>
                     {comment.userId}
-                  </Typography>
+                  </Typography> */}
                 </Grid>
                 <Grid item>
                   <Typography component="p" variant="body1">
