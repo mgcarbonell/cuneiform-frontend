@@ -29,9 +29,6 @@ function App() {
         dark: '#ccbfbf',
         contrastText: '#000'
       },
-      card: {
-        maxWidth: "60%"
-      },
       background: {
         default: '#e4f0e2'
       },

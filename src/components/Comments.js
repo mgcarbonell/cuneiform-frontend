@@ -1,39 +1,45 @@
 import React, { useState } from 'react';
 import CommentModel from '../models/comment';
-import { Card, CardContent, Grid, IconButton, makeStyles, Typography } from '@material-ui/core';
-import { useTheme } from '@material-ui/styles';
+import { Paper, Grid, IconButton, makeStyles, Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexDirection: 'column',
     wordWrap: 'break-word',
-    justify: 'center',
-    alignItems: 'center',
+    justifyItems: 'center',
     flexGrow: 1,
-    padding: theme.spacing(0, 3),
+    '& > *': {
+      margin: theme.spacing(.7),
+    },
   },
-  card: {
-    maxWidth: 300,
-
+  paper: {
+    width: 300,
+    [theme.breakpoints.down('sm')]: {
+      width: 300,
+      height: 100
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 400,
+      height: 90
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 500,
+      height: 100
+    }
   },
   content: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    margin: '0px 20px 0px 20px'
+    margin: '20px'
   }
 }))
-
-
 
 const Comments = ({ comments, loadComments, setComments }) => {
   const [comment] = useState();
 
   const classes = useStyles();
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   const handleCommentDelete = (commentId) => {
     CommentModel.delete(comment, commentId)
@@ -47,14 +53,15 @@ const Comments = ({ comments, loadComments, setComments }) => {
   return(
     <div className={ classes.root }>
         { comments.map((comment) => (
-            <Card
-              className={classes.card}
-              elevation={1}
-              style={{
-              // display:"inline-block",
-              textAlign: "center",
-              padding: 30
-              }}
+          <Grid>
+            <Paper
+            className={classes.paper}
+            elevation={1}
+            style={{
+            display:"inline-block",
+            textAlign: "center",
+            
+            }}
             >
               <div className={classes.content}>
                 <Grid item>
@@ -73,7 +80,8 @@ const Comments = ({ comments, loadComments, setComments }) => {
                   </IconButton>
                 </Grid>
               </div>
-            </Card>
+            </Paper>
+          </Grid>
         ))}
     </div>
   )
