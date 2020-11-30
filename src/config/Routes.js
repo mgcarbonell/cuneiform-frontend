@@ -28,6 +28,7 @@ const Routes = (props) => (
     <Route path='/contact' component={ Contact } />
     <Route path='/entry/:id' component={ ShowEntry } />
     <Route path='/entry' component={ EntryList } />
+    <Route path='/newentry' component= { NewEntry } currentUser={props.currentUser } />
     <Route path='/register' component={ Register } />
     <Route path='/login' render={ (routeComponentProps) => {
       return  <Login 
@@ -39,7 +40,6 @@ const Routes = (props) => (
               />
     } } />
     <PrivateRoute path='/profile' component={ Profile } currentUser={ props.currentUser } currentUsername={ props.currentUsername } />
-    <PrivateRoute path='/newentry' component={ NewEntry } currentUser={ props.currentUser } currentUsername={ props.currentUsername } />
     {/* update an entry */}
     {/* delete an entry */}
   </Switch>
