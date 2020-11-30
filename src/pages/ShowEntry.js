@@ -51,7 +51,10 @@ const ShowEntry = (props) => {
   }
 
   return (
-    <>
+    <Grid
+      justify="center"
+      alignItems="center"
+    >
       <Grid item xs={12}>
       { formToggle ?
         <EditEntryForm
@@ -105,7 +108,7 @@ const ShowEntry = (props) => {
         setComments={ setComments }
         loadComments={ loadComments }
       />
-    </>
+    </Grid>
   );
 }
 

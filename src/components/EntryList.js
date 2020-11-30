@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Grid, Paper } from '@material-ui/core';
+import { Button, Grid, Card } from '@material-ui/core';
 import EntryModel from '../models/entry';
 // import Entry from '../pages/Entry';
 
@@ -20,7 +20,7 @@ const EntryList = (props) => {
     <>
       {entries.map((entry) => (
         <Grid>
-          <Paper 
+          <Card 
           elevation={3} 
           style={{
           padding: 10,
@@ -35,7 +35,7 @@ const EntryList = (props) => {
                 Read more
               </Button>
             </Link>
-          </Paper>
+          </Card>
         </Grid>
       ))}
     </>

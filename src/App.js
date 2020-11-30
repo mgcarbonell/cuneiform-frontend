@@ -28,15 +28,16 @@ function App() {
         dark: '#ccbfbf',
         contrastText: '#000'
       },
-      paper: {
-        main: '#fbf4ec',
+      card: {
+        maxWidth: "60%"
       },
       background: {
         default: '#e4f0e2'
       },
     },
     typography: {
-      fontFamily: font
+      fontFamily: font,
+      fontSize: 13,
     }
   })
   
@@ -53,7 +54,8 @@ function App() {
       }
     },
     typography: {
-      fontFamily: font
+      fontFamily: font,
+      fontSize: 13,
     }
   })
 

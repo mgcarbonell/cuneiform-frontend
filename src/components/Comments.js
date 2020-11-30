@@ -1,23 +1,29 @@
 import React, { useState } from 'react';
 import CommentModel from '../models/comment';
-import { Grid, IconButton, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Card, CardContent, Grid, IconButton, makeStyles, Typography } from '@material-ui/core';
+import { useTheme } from '@material-ui/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // display: 'flex',
+    flexDirection: 'column',
     wordWrap: 'break-word',
-    // flexWrap: 'wrap',
+    justify: 'center',
+    alignItems: 'center',
     flexGrow: 1,
-    '& > *': {
-      margin: theme.spacing(5),
-      width: theme.spacing(50),
-    },
+    padding: theme.spacing(0, 3),
   },
-  paper: {
-    margin: 'auto',
-  },
+  card: {
+    maxWidth: 300,
 
+  },
+  content: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    margin: '0px 20px 0px 20px'
+  }
 }))
 
 
@@ -26,6 +32,8 @@ const Comments = ({ comments, loadComments, setComments }) => {
   const [comment] = useState();
 
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   const handleCommentDelete = (commentId) => {
     CommentModel.delete(comment, commentId)
@@ -38,37 +46,35 @@ const Comments = ({ comments, loadComments, setComments }) => {
 
   return(
     <div className={ classes.root }>
-      <Grid
-        justify="center"
-        alignItems="center"
-      >
         { comments.map((comment) => (
-          <Paper
-          elevation={1} 
-          style={{
-          textAlign: "center",
-          padding: 10,
-          paddingBottom: 20
-          }}
-          >
-            <Grid item>
-              <Typography component="h3" key={comment.id}>
-                {comment.userId}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography component="p">
-              {comment.body}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <IconButton onClick={ () => handleCommentDelete(comment.id) }>
-              <DeleteIcon />
-              </IconButton>
-            </Grid>
-          </Paper>
+            <Card
+              className={classes.card}
+              elevation={1}
+              style={{
+              // display:"inline-block",
+              textAlign: "center",
+              padding: 30
+              }}
+            >
+              <div className={classes.content}>
+                <Grid item>
+                  <Typography component="h3" variant="h6" key={comment.id}>
+                    {comment.userId}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography component="p" variant="body1">
+                  {comment.body}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <IconButton onClick={ () => handleCommentDelete(comment.id) }>
+                  <DeleteIcon />
+                  </IconButton>
+                </Grid>
+              </div>
+            </Card>
         ))}
-      </Grid>
     </div>
   )
 }
