@@ -1,11 +1,12 @@
+import { Typography } from '@material-ui/core';
 import React from 'react';
 
 const CompleteEntry = (props) => {
   return (
     <div>
-      <h3>{props.entryTitle}</h3>
-      <h5>{props.id}</h5>
-      <p>{props.entryBody}</p>
+      <Typography component="h3" variant="h6">{props.entryTitle}</Typography>
+      <Typography component="h5" variant="h6">{props.id}</Typography>
+      <Typography component="p" variant="body1">{props.entryBody}</Typography>
     </div>
   )
 }
