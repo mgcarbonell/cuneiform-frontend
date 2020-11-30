@@ -39,8 +39,10 @@ const NewEntry = (props) => {
     let userId = localStorage.getItem("id")
   
     EntryModel.create({ title, body, userId, promptId, quote, isPublic })
-        history.push('/profile')
+      .then(() => {
         props.setOpenDialog(false)
+        history.push('/profile')
+      })
   }
 
   const handleChange = (event) => {
@@ -98,7 +100,7 @@ const NewEntry = (props) => {
 
             <form 
                 className={classes.root} 
-                onSubmit={handleSubmit} 
+                onSubmit={handleSubmit}
                 noValidate 
             >
 

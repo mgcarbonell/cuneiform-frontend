@@ -3,25 +3,27 @@ import React, { useState } from 'react';
 import EntryModel from '../models/entry';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
-              Button, 
-              Grid, 
-              Paper, 
-              TextField, 
-              Switch 
-            } from '@material-ui/core';
+        Button, 
+        Grid, 
+        Paper, 
+        TextField, 
+        Switch 
+      } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '70ch',
+  const useStyles = makeStyles((theme) => ({
+    field: {
+      width: 300,
+      [theme.breakpoints.down('sm')]: {
+        width: 300,
+      },
+      [theme.breakpoints.up('md')]: {
+        width: 400,
+      },
+      [theme.breakpoints.up('lg')]: {
+        width: 500,
+      }
     },
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '70ch',
-    },
-  },
-}));
+  }))
 
 const EditEntryForm = (props) => {
   const classes = useStyles();
@@ -40,14 +42,15 @@ const EditEntryForm = (props) => {
   }
 
   return (
-    <div style={{ padding: 50 }}>
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-      >
-        <Paper>
+    <div>
+        <Paper
+          className={classes.paper}
+          elevation={1}
+          style={{
+          display:"inline-block",
+          textAlign: "center",
+          }}
+        >
           <Grid
             container
             direction="column"
@@ -56,14 +59,14 @@ const EditEntryForm = (props) => {
           >
 
             <form 
-                className={classes.root} 
                 onSubmit={handleSubmit} 
                 noValidate 
                 autoComplete="off"
             >
 
               <div aria-label="Entry title textfield">
-                <TextField 
+                <TextField
+                  className={classes.field}
                   id="outlined-basic" 
                   label="Title"
                   type="text"
@@ -76,10 +79,14 @@ const EditEntryForm = (props) => {
 
               <div aria-label="Journal entry textfield">
                 <TextField
+                  className={classes.field}
+                  style={{
+                    marginTop: 10,
+                  }}
                   id="outlined-multiline-static"
                   label="Write Away"
                   multiline
-                  rows={40}
+                  rows={20}
                   value={body}
                   type="text"
                   defaultValue={props.entryBody}
@@ -117,7 +124,6 @@ const EditEntryForm = (props) => {
               </form>
           </Grid>
         </Paper>
-      </Grid>
     </div>
   );
 }
