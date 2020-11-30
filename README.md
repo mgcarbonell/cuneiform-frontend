@@ -36,8 +36,8 @@ Please see our backlog on our Trello.
 
 ## Code snippets
 
-![Randomization for prompt](./public/randomization-for-prompt.png) Mario Carbonell
-![Comments](./public/comments.png) Devin Blair
+![Randomization for prompt by Mario](./public/randomization-for-prompt.png)
+![Comments by Devin](./public/comments.png)
 
 ## About Us
 
