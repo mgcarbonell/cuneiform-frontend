@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const UserEntries = (props) => {
-  const [entries, setEntries] = useState([])
+
+  const [entries, setEntries] = useState()
 
   const classes = useStyles();
 
@@ -52,10 +53,10 @@ const UserEntries = (props) => {
           <Typography component="h3" variant="h6" key={entry.id}>
           {entry.title}
         </Typography>
-        <Typography component="h5" variant="body1" key={entry.userId}>
+        <Typography component="h5" variant="body1">
           By {entry.userId}
         </Typography>
-        <Typography compoment="p" variant="body1" key={entry.body}>
+        <Typography compoment="p" variant="body1">
           {entry.body}
         </Typography>
         <Link to={`/entry/${entry.id}`}>

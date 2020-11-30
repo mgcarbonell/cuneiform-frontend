@@ -102,7 +102,6 @@ const NewEntry = (props) => {
                 className={classes.root} 
                 onSubmit={handleSubmit}
                 noValidate 
-                autoComplete="off"
             >
 
               <div aria-label="Entry title textfield">

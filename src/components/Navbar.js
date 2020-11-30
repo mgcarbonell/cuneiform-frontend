@@ -10,7 +10,8 @@ import {
               MenuItem, 
               Menu,
               Switch, 
-              Grid } from '@material-ui/core';
+              Grid,
+              Tooltip } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
@@ -50,9 +51,11 @@ const Navbar = (props) => {
       <AppBar position="static">
         <Toolbar>
             <Link to={'/'}>
-              <Button className={classes.homeButton}>
-                <img src={logo} alt="cuneiform logo of the cuneiform symbol An" style={{ width: 36, height: 36 }}/>
-              </Button>
+              <Tooltip title="Home">
+                <Button className={classes.homeButton}>
+                  <img src={logo} alt="cuneiform logo of the cuneiform symbol An" style={{ width: 36, height: 36 }}/>
+                </Button>
+              </Tooltip>
             </Link>
             <Grid
               component="label"

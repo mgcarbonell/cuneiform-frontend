@@ -13,7 +13,7 @@ import CompleteEntry from '../components/CompleteEntry';
 import EditEntryForm from '../components/EditEntryForm';
 import Comments from '../components/Comments';
 import CommentForm from '../components/CommentForm';
-import ConfirmDialog from '../components/ConfirmDialog'
+import ConfirmDialog from '../components/ConfirmDialog';
 
 const useStyles = makeStyles((theme) => ({
   root: {

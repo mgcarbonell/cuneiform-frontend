@@ -18,7 +18,7 @@ We hope to foster creative writers, people who wish to jot down their thoughts, 
 * React.js
 * AJAX
 * Material-UI
-* Quote API provided by [Rakuten](https://english.api.rakuten.net/) and [Quotes](https://english.api.rakuten.net/martin.svoboda/api/quotes15) by [Martin Svoboda](https://english.api.rakuten.net/user/martin.svoboda)
+* Quote API provided by [Rakuten](https://english.api.rakuten.net/) and [Quotes](https://english.api.rakuten.net/martin.svoboda/api/quotes15).
 
 ## Getting Started
 
@@ -38,6 +38,7 @@ Please see our backlog on our Trello.
 We are two Software Engineers from General Assembly's Software Engineering Immersive, check us out!
 
 Mario Carbonell [LinkedIn](https://www.linkedin.com/in/mgcarbonell/) [GitHub](https://github.com/mgcarbonell)
+
 Devin Blair [LinkedIn](https://www.linkedin.com/in/devin-blair/) [GitHub](https://github.com/dcblair)
 
 

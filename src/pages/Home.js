@@ -19,26 +19,9 @@ const Home = (props) => {
   const classes = useStyles();
 
   return (
-    <Grid className={classes.root}>
+    <div className={classes.root}>
       <EntryList />
-      { props.currentUser ?
-      <>
-        <Link to={'/NewEntryForm'}>
-          <Button color="primary" variant="contained">
-            New Entry
-          </Button>
-        </Link>
-      </>
-      :
-      <>
-        <Link to={'/Entry'}>
-          <Button color="primary" variant="contained">
-            Public Entries
-          </Button>
-        </Link>
-      </>
-      }
-    </Grid>
+    </div>
   )
 }
 
