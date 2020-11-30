@@ -38,6 +38,7 @@ Please see our backlog on our Trello.
 We are two Software Engineers from General Assembly's Software Engineering Immersive, check us out!
 
 Mario Carbonell [LinkedIn](https://www.linkedin.com/in/mgcarbonell/) [GitHub](https://github.com/mgcarbonell)
+
 Devin Blair [LinkedIn](https://www.linkedin.com/in/devin-blair/) [GitHub](https://github.com/dcblair)
 
 
