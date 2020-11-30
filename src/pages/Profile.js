@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import EntryModel from '../models/entry';
 import UserEntries from '../components/UserEntries';
-import { makeStyles } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,21 +17,15 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Profile = props => {
-
-  const [entries, setEntries] = useState([])
-
-  useEffect(() => {
-    EntryModel.user(props.currentUser)
-      .then(data => setEntries(data.entries))
-  }, [props.currentUser])
+  const classes = useStyles();
 
   return (
-    <>
+    <Grid className={ classes.root }>
       <h1>Profile of { props.currentUsername }</h1>
       <UserEntries
         currentUser={ props.currentUser }         
       />
-    </>
+    </Grid>
   )
 }
 

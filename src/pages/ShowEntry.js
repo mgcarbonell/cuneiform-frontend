@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Button, IconButton, Grid } from '@material-ui/core';
+import { Button, 
+        IconButton, 
+        Grid, 
+        makeStyles 
+      } from '@material-ui/core';
 import EntryModel from '../models/entry';
 import CommentModel from '../models/comment';
 import EditIcon from '@material-ui/icons/Edit';
@@ -11,6 +15,18 @@ import Comments from '../components/Comments';
 import CommentForm from '../components/CommentForm';
 import ConfirmDialog from '../components/ConfirmDialog';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexDirection: 'column',
+    wordWrap: 'break-word',
+    justifyItems: 'center',
+    flexGrow: 1,
+    '& > *': {
+      margin: theme.spacing(.7),
+    },
+  },
+}))
+
 const ShowEntry = (props) => {
   const [entry, setEntry] = useState([]);
   const [formToggle, setFormToggle] = useState(false);
@@ -20,6 +36,8 @@ const ShowEntry = (props) => {
   const { id } = useParams()
 
   let userId = localStorage.getItem('id')
+
+  const classes = useStyles();
 
   // show current user entry
   useEffect(() => {
@@ -46,16 +64,22 @@ const ShowEntry = (props) => {
   const handleDelete = () => {
     EntryModel.delete(entry, entry.id)
       .then(
-        props.history.push('/')
-        )
+        props.history.push('/profile')
+      )
   }
 
   return (
     <Grid
       justify="center"
       alignItems="center"
+      className={classes.root}
+      elevation={1}
+      style={{
+      display:"inline-block",
+      textAlign: "center",
+      }}
     >
-      <Grid item xs={12}>
+      <Grid item>
       { formToggle ?
         <EditEntryForm
           entryTitle={entry.title}
