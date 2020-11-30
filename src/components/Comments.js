@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CommentModel from '../models/comment';
-import { Grid, IconButton, makeStyles, Paper } from '@material-ui/core';
+import { Grid, IconButton, makeStyles, Paper, Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     margin: 'auto',
   },
-  
+
 }))
 
 
@@ -52,10 +52,14 @@ const Comments = ({ comments, loadComments, setComments }) => {
           }}
           >
             <Grid item>
-              <h3 key={comment.id}>{comment.userId}</h3>
+              <Typography component="h3" key={comment.id}>
+                {comment.userId}
+              </Typography>
             </Grid>
             <Grid item>
-              <p>{comment.body}</p>
+              <Typography component="p">
+              {comment.body}
+              </Typography>
             </Grid>
             <Grid item>
               <IconButton onClick={ () => handleCommentDelete(comment.id) }>

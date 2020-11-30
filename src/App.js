@@ -12,6 +12,8 @@ function App() {
   const [currentUsername, setCurrentUsername] = useState(localStorage.getItem('username'));
   const [darkMode, setDarkMode] = useState(false);
 
+  const font = "'Montserrat', sans-serif";
+
   const lightTheme = createMuiTheme({
     palette: {
       primary: {
@@ -31,7 +33,10 @@ function App() {
       },
       background: {
         default: '#e4f0e2'
-      }
+      },
+    },
+    typography: {
+      fontFamily: font
     }
   })
   
@@ -45,10 +50,13 @@ function App() {
       secondary: {
         main: '#ff4400',
         constrastText: '000'
-      } 
+      }
+    },
+    typography: {
+      fontFamily: font
     }
   })
-  
+
   const storeUser = (userId) => {
     localStorage.setItem('id', userId)
     setCurrentUser( userId )
