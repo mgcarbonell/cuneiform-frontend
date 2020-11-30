@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Routes from './config/Routes'
-import './App.css'
-import UserModel from './models/user'
-import { CssBaseline, Grid, Paper } from '@material-ui/core'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Routes from './config/Routes';
+import './App.css';
+import UserModel from './models/user';
+import { CssBaseline, Grid, Paper } from '@material-ui/core';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 function App() {
@@ -83,8 +84,12 @@ function App() {
               storeUsername={ storeUsername }
             />
           </Grid>
-          <Footer />
         </Paper>
+      <Footer style={{ flex: 1, flexDirection: "row", justifyContent: "space-around" }}>
+        <Link to={'/About'}>About</Link>
+        <Link to={'/Contact'}>Contact</Link>
+        <Link to={'/Help'}>Help</Link>
+      </Footer>
       </ThemeProvider>
     </div>
   );
