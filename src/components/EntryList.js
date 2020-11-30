@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Grid, Card } from '@material-ui/core';
+import { Button, Grid, Card, Typography, Divider } from '@material-ui/core';
 import EntryModel from '../models/entry';
 
 const EntryList = (props) => {
@@ -29,7 +29,7 @@ const EntryList = (props) => {
             <Typography component="h3" variant="h6" key={entry.id}>
               {entry.title}
             </Typography>
-            <Typography component="h5" variant="h6" key={entry.userId}>
+            <Typography component="h5" variant="p" key={entry.userId}>
               By {entry.userId}
             </Typography>
             <Divider variant="middle" />

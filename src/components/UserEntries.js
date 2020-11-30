@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import EntryModel from '../models/entry';
 
 const UserEntries = (props) => {
@@ -16,9 +16,15 @@ const UserEntries = (props) => {
     <div>
       {entries.map((entry) => (
         <>
-        <h3 key={entry.id}>{entry.title}</h3>
-        <h5>By {entry.userId}</h5>
-        <p>{entry.body}</p>
+        <Typography component="h3" variant="h6" key={entry.id}>
+          {entry.title}
+        </Typography>
+        <Typography component="h5" variant="body1" key={entry.userId}>
+          By {entry.userId}
+        </Typography>
+        <Typography compoment="p" variant="body1" key={entry.body}>
+          {entry.body}
+        </Typography>
         <Link to={`/entry/${entry.id}`}>
           <Button color="primary" variant="contained">
             Read more

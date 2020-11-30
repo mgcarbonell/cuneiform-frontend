@@ -50,3 +50,5 @@ Shout out to the TAs who really helped us through this! [Seanny](https://github.
 The Confirmation Dialog was found via Andrew Bliss @ [JavaScript in Plain English](https://medium.com/javascript-in-plain-english)
 
 We definitely learned a lot from Param @ [Learn With PARAM](https://learnwithparam.com/blog/how-to-pass-props-to-state-properly-in-react-hooks/)
+
+Thank you to [Giphy](https://giphy.com/) for the About/Contact/Help gifs.
