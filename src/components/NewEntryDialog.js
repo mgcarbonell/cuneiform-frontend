@@ -1,23 +1,17 @@
 import React from 'react';
-// import Button from '@material-ui/core/Button';
 import { 
               Dialog, 
               DialogTitle, 
               DialogContent,
               Typography, 
               IconButton,
-              // makeStyles 
             } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close'
 
-// const useStyles = makeStyles(theme => ({
-
-// }))
 
 const NewEntryDialog = (props) => {
 
   const { title, children, openDialog, setOpenDialog } = props;
-  // const classes = useStyles()
 
   return (
     <Dialog open={ openDialog } >

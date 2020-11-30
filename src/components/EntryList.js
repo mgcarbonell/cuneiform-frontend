@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Grid, Paper } from '@material-ui/core';
+import { Button, Grid, Paper, Typography, Divider } from '@material-ui/core';
 import EntryModel from '../models/entry';
-// import Entry from '../pages/Entry';
 
 const EntryList = (props) => {
 
@@ -27,9 +26,16 @@ const EntryList = (props) => {
           paddingBottom: 20
           }}
           >
-            <h3 key={entry.id}>{entry.title}</h3>
-            <h5>By {entry.userId}</h5>
-            <p>{entry.body.split(' ').splice(0, 100).join(' ')}...</p>
+            <Typography component="h3" variant="h6" key={entry.id}>
+              {entry.title}
+            </Typography>
+            <Typography component="h5" variant="p" key={entry.userId}>
+              By {entry.userId}
+            </Typography>
+            <Divider variant="middle" />
+            <Typography component="p" variant="body1" style={{ textAlign: "justify" }}>
+              {entry.body.split(' ').splice(0, 100).join(' ')}...
+            </Typography>
             <Link to={`/entry/${entry.id}`}>
               <Button color="primary" variant="contained">
                 Read more
