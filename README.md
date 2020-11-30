@@ -18,7 +18,7 @@ We hope to foster creative writers, people who wish to jot down their thoughts, 
 * React.js
 * AJAX
 * Material-UI
-* Quote API provided by [Rakuten](https://english.api.rakuten.net/) and [Quotes](https://english.api.rakuten.net/martin.svoboda/api/quotes15) by [Martin Svoboda](https://english.api.rakuten.net/user/martin.svoboda)
+* Quote API provided by [Rakuten](https://english.api.rakuten.net/) and [Quotes](https://english.api.rakuten.net/martin.svoboda/api/quotes15).
 
 ## Getting Started
 
