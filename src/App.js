@@ -86,9 +86,9 @@ function App() {
           </Grid>
         </Paper>
       <Footer style={{ flex: 1, flexDirection: "row", justifyContent: "space-around" }}>
-        <Link to={'/About'}>About</Link>
-        <Link to={'/Contact'}>Contact</Link>
-        <Link to={'/Help'}>Help</Link>
+        <Link to={'/About'} style={{ padding: 5 }}>About</Link>
+        <Link to={'/Contact'} style={{ padding: 5 }}>Contact</Link>
+        <Link to={'/Help'} style={{ padding: 5 }}>Help</Link>
       </Footer>
       </ThemeProvider>
     </div>

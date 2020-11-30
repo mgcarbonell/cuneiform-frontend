@@ -25,7 +25,7 @@ function Footer({ children }) {
       <div>
           <div style={fixed} />
           <div style={style}>
-            <Grid item style={{ flex: 1, justifyContent: "space-between" }}>
+            <Grid item>
               { children }
             </Grid>
           </div>
