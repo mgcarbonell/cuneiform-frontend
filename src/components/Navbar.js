@@ -15,6 +15,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import { makeStyles } from '@material-ui/core/styles';
+import logo from '../assets/an.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
   },
   newEntryButton: {
     marginRight: '1rem'
-  }
+  },
+
 }));
 
 const Navbar = (props) => {
@@ -49,7 +51,7 @@ const Navbar = (props) => {
         <Toolbar>
             <Link to={'/'}>
               <Button className={classes.homeButton}>
-                Home
+                <img src={logo} alt="cuneiform logo of the cuneiform symbol An" style={{ width: 36, height: 36 }}/>
               </Button>
             </Link>
             <Grid
