@@ -5,6 +5,12 @@ import Home from '../pages/Home'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
 import Profile from '../pages/Profile'
+import EntryList from '../components/EntryList'
+import ShowEntry from '../pages/ShowEntry'
+import NewEntry from '../components/NewEntryForm'
+import Contact from '../pages/Contact'
+import Help from '../pages/Help'
+import About from '../pages/About'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const currentUser = localStorage.getItem('id')
@@ -17,16 +23,24 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const Routes = (props) => (
   <Switch>
     <Route exact path='/' component={ Home } />
+    <Route path='/about' component={ About } />
+    <Route path='/help' component={ Help } />
+    <Route path='/contact' component={ Contact } />
+    <Route path='/entry/:id' component={ ShowEntry } />
+    <Route path='/entry' component={ EntryList } />
+    <Route path='/newentry' component= { NewEntry } currentUser={props.currentUser } />
     <Route path='/register' component={ Register } />
     <Route path='/login' render={ (routeComponentProps) => {
       return  <Login 
                 {...routeComponentProps}
-                // more props to come here
                 currentUser={ props.currentUser }
                 storeUser={ props.storeUser }
+                currentUsername={ props.currentUsername }
+                storeUsername={ props.storeUsername }
               />
     } } />
-    <PrivateRoute path='/profile' component={ Profile } currentUser={ props.currentUser } />
+    <PrivateRoute path='/profile' component={ Profile } currentUser={ props.currentUser } currentUsername={ props.currentUsername } />
+    <PrivateRoute path='/newentry' component={ NewEntry } currentUser={ props.currentUser } currentUsername={ props.currentUsername } />
   </Switch>
 )
 
