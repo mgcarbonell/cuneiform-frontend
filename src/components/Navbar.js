@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import NewEntryDialog from './NewEntryDialog';
 import NewEntryForm from './NewEntryForm';
 import { 
-              AppBar, 
-              Toolbar, 
-              Button, 
-              IconButton, 
-              MenuItem, 
-              Menu,
-              Switch, 
-              Grid,
-              Tooltip } from '@material-ui/core';
+  AppBar, 
+  Toolbar, 
+  Button, 
+  IconButton, 
+  MenuItem, 
+  Menu,
+  Switch, 
+  Grid,
+  Tooltip 
+  } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
