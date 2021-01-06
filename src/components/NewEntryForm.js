@@ -3,8 +3,14 @@ import EntryModel from '../models/entry';
 import Prompt from '../components/Prompt'
 import Quote from '../components/Quote'
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Grid, Paper, TextField, Switch } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { 
+  Button, 
+  Grid, 
+  Paper, 
+  TextField, 
+  Switch 
+} from '@material-ui/core';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,14 +40,21 @@ const NewEntry = (props) => {
   
   const history = useHistory()
 
+  const location = useLocation()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let userId = localStorage.getItem("id")
   
     EntryModel.create({ title, body, userId, promptId, quote, isPublic })
       .then(() => {
-        props.setOpenDialog(false)
-        history.push('/profile')
+        if(location.pathname === '/profile'){
+          props.setOpenDialog(false)
+          window.location.reload()          
+        } else {
+          props.setOpenDialog(false)
+          history.push('/profile')
+        }
       })
   }
 
