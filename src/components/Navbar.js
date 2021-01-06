@@ -112,7 +112,7 @@ const Navbar = (props) => {
                     <MenuItem component={ Link } to={'/profile'} onClick={handleClose}>
                       Profile
                     </MenuItem>
-                    <MenuItem component={ Link } to={'/logout'} onClick={handleClose, props.logout}>
+                    <MenuItem component={ Link } to={'/logout'} onClick={handleClose && props.logout}>
                       Logout
                     </MenuItem>
                   </Menu>

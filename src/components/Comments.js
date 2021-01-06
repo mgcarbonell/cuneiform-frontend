@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Comments = ({ comments, loadComments, setComments }) => {
+const Comments = ({ comments, setComments }) => {
   const [comment] = useState();
 
   const classes = useStyles();
@@ -44,9 +44,7 @@ const Comments = ({ comments, loadComments, setComments }) => {
   const handleCommentDelete = (commentId) => {
     CommentModel.delete(comment, commentId)
     .then(
-      setComments(comments.filter(comment => comment.id !== commentId)
-      )).then(
-        loadComments()
+      setComments(comments.filter(comment => comment.id !== commentId))
       )
   }
 
