@@ -70,3 +70,11 @@ We definitely learned a lot from Param @ [Learn With PARAM](https://learnwithpar
 Thank you to [Giphy](https://giphy.com/) for the About/Contact/Help gifs.
 
 And finally, thank you to [Lit Ipsum](https://litipsum.com/) for the literary lorem ipsum text.
+
+## Installiation
+
+1. Clone the frontend and [backend](https://github.com/mgcarbonell/cuneiform-backend) repositories.
+2. Ensure you have postgres
+3. npm upgrade
+4. Create a database in postgres
+5. migrate & seed the database (seed file included in the backend). 
