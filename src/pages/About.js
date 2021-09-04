@@ -15,7 +15,6 @@ const About = () => {
           Please visit our <a href="https://github.com/mgcarbonell/cuneiform-frontend">Readme on GitHub</a> for a full list of credits, and thank yous. Sincerely, we hope you enjoy.
         </Typography>
       </Grid>
-        />
     </div>
   );
 }
